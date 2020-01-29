@@ -86,9 +86,9 @@ public class Cage implements Serializable{
 	{
 		setOuvert(true);
 	}
-	/**
-	 * permet la fermeture de la cage
-	 */
+	 /**
+	  * permet de fermer la cage
+	  */
 	public void fermer()
 	{
 		setOuvert(false);

@@ -6,7 +6,7 @@ package org.formation.zoo.modele.metier;
  * Ele regroupe les principaux attributs et leurs méthodes.
  * 
  * @author J.Vincensini
- * @see org.formation.zoo.modele.Lion
+ * @see org.formation.zoo.modele.metier.Lion
  * @version 1.0
  *
  */

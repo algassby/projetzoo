@@ -3,7 +3,7 @@ package org.formation.zoo.vue;
 import java.util.List;
 import java.util.Vector;
 
-import org.formation.zoo.modele.*;
+
 import org.formation.zoo.modele.technique.BeurkException;
 import org.formation.zoo.modele.technique.CagePleineException;
 import org.formation.zoo.modele.technique.PorteException;
