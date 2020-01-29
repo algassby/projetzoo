@@ -9,6 +9,8 @@ import org.formation.zoo.modele.technique.CagePleineException;
 import org.formation.zoo.modele.technique.PorteException;
 import org.formation.zoo.stockage.FichierAccess;
 
+import controleur.Manager;
+
 /**
  * Programme PRINCIPAL 
  * Contient le main
@@ -19,13 +21,10 @@ public final class Zoo {
 	/**
 	 * Vecteur de Cages. C'est la COMPOSITION.
 	 */
-	private List<Cage> lesCages;
-	private FichierAccess acces;
+//	private List<Cage> lesCages;
+//	private FichierAccess acces;
 		
 	public Zoo() {
-		lesCages = null;
-		acces = new FichierAccess("zoo.data");
-		init();		
 		
 		
 	}
@@ -33,27 +32,17 @@ public final class Zoo {
 	 * Méthode privée qui charge le modèle.
 	 * Pour l'instant elle instancie les animaux
 	 */
-	private void init()
-	{
-		lesCages = acces.lireTous();
-	}
+	
 	public void afficher()
 	{
-		for (int i = 0; i < lesCages.size(); i++) {
-			System.out.println(lesCages.get(i));
-		}
+		Manager.getInstance().afficher();
 	}
 	/**
 	 * Permet de nourrir tous les animaux du zoo
 	 */
 	public void nourrir ()
 	{
-		for (int i = 0; i < lesCages.size(); i++) {
-			if (lesCages.get(i).getOccupant() != null)
-			{
-				lesCages.get(i).getOccupant().manger();
-			}
-		}
+		Manager.getInstance().nourrir();
 	}
 	/**
 	 * 
@@ -63,41 +52,11 @@ public final class Zoo {
 	 */
 	public String devorer(int mangeur, int mange)
 	{
-		Mangeable laBeteConvoitee = null;
-		String s = "INCOMPATIBLE";
-		if (lesCages.get(mange).getOccupant() != null && lesCages.get(mangeur).getOccupant() != null && lesCages.get(mange).getOccupant() instanceof Mangeable)
-			{
-				lesCages.get(mange).ouvrir();
-				try {
-					laBeteConvoitee = (Mangeable)lesCages.get(mange).sortir();
-				} catch (PorteException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-				try
-				{
-					s = lesCages.get(mangeur).getOccupant().manger(laBeteConvoitee);
-				}
-				catch (BeurkException e)
-				{
-					s = e.getMessage();
-					try {
-						lesCages.get(mange).entrer((Animal)laBeteConvoitee);
-					} catch (PorteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (CagePleineException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					lesCages.get(mange).fermer();
-				}
-		}
-		return s;
+		return Manager.getInstance().devorer(mangeur, mange);
 	}
 	
 	public void fermer() {
-		acces.ecrireTous(lesCages);
+		Manager.getInstance().fermer();
 	}
 	
 	public static void main(String[] args) {

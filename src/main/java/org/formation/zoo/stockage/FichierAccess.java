@@ -51,7 +51,7 @@ public class FichierAccess{
 	        }			
 	}
 	/**
-	 * méthode privée de lecture de la collection dans, le fichier<s
+	 * méthode privée de lecture de la collection dans, le fichier
 	 */
 	private void read() {
 	    ObjectInputStream fic = null;
