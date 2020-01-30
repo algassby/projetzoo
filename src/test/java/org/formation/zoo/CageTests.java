@@ -2,9 +2,9 @@ package org.formation.zoo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.formation.zoo.modele.Animal;
-import org.formation.zoo.modele.Cage;
-import org.formation.zoo.modele.Lion;
+import org.formation.zoo.modele.metier.Animal;
+import org.formation.zoo.modele.metier.Cage;
+import org.formation.zoo.modele.metier.Lion;
 import org.formation.zoo.modele.technique.CagePleineException;
 import org.formation.zoo.modele.technique.PorteException;
 import org.junit.jupiter.api.AfterAll;
@@ -44,7 +44,7 @@ class CageTests {
 			c.entrer(bete);
 			fail("aurait du jeter une PorteException");
 		} catch (PorteException e) {
-			assertEquals("Problème de porte", e.getMessage());
+			assertEquals("Probl�me de porte", e.getMessage());
 		} catch (CagePleineException e) {
 			fail("la cage ne devrait pas être pleine");
 		}
@@ -69,7 +69,8 @@ class CageTests {
 		} catch (PorteException e) {
 			fail("n'aurait pas du jeter une PorteException");
 		} catch (CagePleineException e) {
-			assertEquals("La cage est déjà occupée", e.getMessage());
+
+
 		}
 	}
 
@@ -93,9 +94,9 @@ class CageTests {
 		}
 		try {
 			bete = c.sortir();
-			fail("la cage est fermée!!!!");
+			fail("la cage est ferm�e!!!!");
 		} catch (PorteException e) {
-			assertEquals("Problème de porte", e.getMessage());
+			assertEquals("Probl�me de porte", e.getMessage());
 		}
 		c.ouvrir();
 		bete = null;

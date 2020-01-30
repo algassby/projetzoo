@@ -19,7 +19,7 @@ public class Cage implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * L'associé dans la relation
+	 * L'associe dans la relation
 	 */
 	private Animal occupant;
 	/**
@@ -27,7 +27,7 @@ public class Cage implements Serializable{
 	 */
 	private int x;
 	/**
-	 * ordonnée de la cage (en pixels)
+	 * ordonn�e de la cage (en pixels)
 	 */
 	private int y;
 	/**

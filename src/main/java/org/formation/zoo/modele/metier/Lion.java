@@ -41,10 +41,6 @@ public final class Lion extends Animal {
 	@Deprecated
 	public String manger(Individu i) {
 		
-		/*if (i != null)
-		{
-			setPoids(getPoids()+(i.getPoids()/3));
-		}*/
 		return "MIAM";
 	}
 	@Override

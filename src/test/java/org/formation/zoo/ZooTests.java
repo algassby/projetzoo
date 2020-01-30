@@ -23,7 +23,7 @@ class ZooTests {
 		//singe vide
 		assertEquals("INCOMPATIBLE",z.devorer(0,2));
 		//singe gazelle
-		assertEquals("Je n'aime pas Ã§a",z.devorer(0, 3));
+		assertEquals("Je n'aime pas ça",z.devorer(0, 3));
 		//Lion Lion
 		assertEquals("INCOMPATIBLE",z.devorer(1,1));
 		//lion singe

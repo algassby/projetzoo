@@ -29,7 +29,7 @@ public final class Zoo {
 		
 	}
 	/**
-	 * Méthode privée qui charge le modèle.
+	 * Methode priv� qui charge le modele.
 	 * Pour l'instant elle instancie les animaux
 	 */
 	
