@@ -26,7 +26,6 @@ public final class Zoo {
 		
 	public Zoo() {
 		
-		
 	}
 	/**
 	 * Methode privé qui charge le modele.

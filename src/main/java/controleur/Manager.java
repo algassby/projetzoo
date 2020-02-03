@@ -23,7 +23,7 @@ public final class Manager {
 	private FichierAccess acces;
 	private static   Manager instance = null;
 	/**
-	 * le constructeur doit etre privÃ©
+	 * le constructeur doit etre privé
 	 */
 	private Manager() {
 		lesCages = null;
@@ -44,7 +44,7 @@ public final class Manager {
 	}
 	
 	/**
-	 * MÃ©thode privÃ©e qui charge le modÃ¨le.
+	 * Méthode privé qui charge le modèle.
 	 * Pour l'instant elle instancie les animaux
 	 */
 	private void init()
