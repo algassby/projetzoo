@@ -20,8 +20,8 @@ import org.formation.zoo.stockage.FichierAccess;
 public final class Manager {
 	
 	private List<Cage> lesCages;
-	private FichierAccess acces;
-	private static   Manager instance = null;
+	private FichierAccess<Cage> acces;
+	private static   Manager instance = new Manager();
 	/**
 	 * le constructeur doit etre privé
 	 */
@@ -37,9 +37,7 @@ public final class Manager {
 	 * @return instance, l'instance du singleton
 	 */
 	public static Manager getInstance() {
-		if(instance == null) {
-			instance = new Manager();
-		}
+		
 		return instance;
 	}
 	
@@ -111,11 +109,16 @@ public final class Manager {
 	public void fermer() {
 		acces.ecrireTous(lesCages);
 	}
-	public void afficher()
+	public String[] afficher()
 	{
-		for (int i = 0; i < lesCages.size(); i++) {
-			System.out.println(lesCages.get(i));
+		String res [];
+		
+		res = new String[lesCages.size()];
+		for(int i = 0; i < lesCages.size();i++)
+		{
+			res[i] = lesCages.get(i).toString();
 		}
+		return res;
 	}
 
 }

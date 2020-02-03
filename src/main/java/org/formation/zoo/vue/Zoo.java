@@ -1,5 +1,6 @@
 package org.formation.zoo.vue;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
@@ -35,6 +36,7 @@ public final class Zoo {
 	public void afficher()
 	{
 		Manager.getInstance().afficher();
+		Arrays.asList(Manager.getInstance().afficher()).stream().forEach(System.out::println);
 	}
 	/**
 	 * Permet de nourrir tous les animaux du zoo
