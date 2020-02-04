@@ -18,7 +18,7 @@ import service.CagePOJO;
  * @author algas
  *
  */
-public final class Conversion {
+public final  class Conversion {
 	public static final String MODELE = "org.formation.zoo.modele.metier";
 
 	/**
