@@ -3,3 +3,5 @@ org.formation.zoo.modele.metier
 org.formation.zoo.modele.technique
 org.formation.zoo.stockage
 org.formation.zoo.vue
+service
+utilitaire

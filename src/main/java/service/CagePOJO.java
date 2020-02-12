@@ -18,10 +18,9 @@ public class CagePOJO {
 	private double poids;
 	
 	/**
-	 * 
+	 * initialise  les attributs à null
 	 */
 	public CagePOJO() {
-		// TODO Auto-generated constructor stub
 		x = 0;
 		y = 0;
 		cle = 0;

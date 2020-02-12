@@ -27,6 +27,11 @@ public final  class Conversion {
 	private Conversion() {
 		
 	}
+	/**
+	 * transforme la cagePojo en cage
+	 * @param cp, la cage pojo
+	 * @return
+	 */
 	public static Cage pojoToCage(CagePOJO cp) {
 		Cage ret =  null;
 		Animal bete = null;
