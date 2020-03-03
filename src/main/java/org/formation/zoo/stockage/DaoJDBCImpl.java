@@ -18,9 +18,11 @@ import service.GazellePOJO;
  */
 public class DaoJDBCImpl implements Dao<CagePOJO> {
 
+	DaoMemoire daomemoire;
 	private DaoORB connecteur;
 	public DaoJDBCImpl() {
 		connecteur = new DaoORB();
+		daomemoire = new DaoMemoire();
 	}
 	@Override
 	public List<CagePOJO> lireTous() {
@@ -30,12 +32,11 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		CagePOJO tmp = null;
 		GazellePOJO gaz =null;
 		
-		
 		Statement st = null;
 		ResultSet rs = null;
 		
 		try {
-			lesCagePojo = new Vector<CagePOJO>();
+			lesCagePojo = new Vector<>();
 			st = connecteur.getConnection().createStatement();
 			rs = st.executeQuery(req);
 			if(rs != null) {
@@ -58,7 +59,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 							gaz.setIdAnimal(rs.getInt("idAnimal"));
 							gaz.setLgCornes(rs.getInt("lgCornes"));
 							tmp.setGaz(gaz);
-						
+					
 					     }
 						
 					}
@@ -69,7 +70,6 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -77,15 +77,27 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 	}
 	@Override
 	public void ecrireTous(List<CagePOJO> elt) {
+		String requete = "INSERT INTO animal VALUES ('', 'Lion','Grizly','12','75');";
+		CagePOJO tmp = null;
+		Statement st = null;
 		
+		try {
+			
+			elt = new Vector<>();
+			st = connecteur.getConnection().createStatement();
+			int rs = st.executeUpdate(requete);
+			if(rs == 1) {
+					
+					elt.add(tmp);
+				
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
  
-	public static void main(String [] args) {
-		DaoJDBCImpl daojdbc = new DaoJDBCImpl();
-		daojdbc.lireTous().forEach(System.out::println);
-		
-	}
 	@Override
 	public void modifier(int cle, CagePOJO obj) {
 		// TODO Auto-generated method stub
@@ -104,6 +116,21 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 	@Override
 	public void effacer(int cle) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * @return the daomemoire
+	 */
+	public DaoMemoire getDaomemoire() {
+		return daomemoire;
+	}
+	public static void main(String [] args) {
+		
+		DaoJDBCImpl daojdbc = new DaoJDBCImpl();
+		daojdbc.lireTous().forEach(System.out::println);
+		daojdbc.ecrireTous(daojdbc.getDaomemoire().lireTous());
+		daojdbc.lireTous().forEach(System.out::println);
 		
 	}
 		

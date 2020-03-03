@@ -146,6 +146,13 @@ public class CagePOJO {
 	public void setPoids(double poids) {
 		this.poids = poids;
 	}
+
+
+	@Override
+	public String toString() {
+		return "CagePOJO [x=" + x + ", y=" + y + ", cle=" + cle + ", codeAnimal=" + codeAnimal + ", nom=" + nom
+				+ ", age=" + age + ", poids=" + poids + ", gaz=" + gaz + "]";
+	}
 	
 
 }
