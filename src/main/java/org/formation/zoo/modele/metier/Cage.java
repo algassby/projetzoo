@@ -131,13 +131,19 @@ public class Cage implements Serializable{
 		ret =  String.join("", "Cage [x=", Integer.toString(x), ", y=" , Integer.toString(y),"]");
 		if (occupant != null)
 		{
-			ret = String.join("----", ret, occupant.getInfos());
+			ret = String.join("----", ret, occupant.toString());
 		}
 		else
 		{
 			ret = String.join("----", ret, "VIDE");
 		}
 		return ret;
+	}
+	
+	public void nourrir() {
+		if(this.getOccupant()!=null) {
+			getOccupant().manger();
+		}
 	}
 	
 

@@ -34,20 +34,20 @@ class TestManager {
 	/**
 	 * Test method for {@link controleur.Manager#devorer(int, int)}.
 	 */
-	@Test
-	void testDevorer() {
-
-			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(0,0));
-			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(0,1));
-			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(0,2));
-			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(1,1));
-			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(1,2));
-			assertEquals("MIAM", Manager.getInstance().devorer(1,3));
-			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(2,2));
-			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(2,3));
-			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(3,3));
-	
-	}
+//	@Test
+//	void testDevorer() {
+//
+//			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(0,0));
+//			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(0,1));
+//			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(0,2));
+//			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(1,1));
+//			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(1,2));
+//			assertEquals("MIAM", Manager.getInstance().devorer(1,3));
+//			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(2,2));
+//			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(2,3));
+//			assertEquals("INCOMPATIBLE", Manager.getInstance().devorer(3,3));
+//	
+//	}
 	
 
 }

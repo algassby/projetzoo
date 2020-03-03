@@ -19,7 +19,7 @@ import service.CagePOJO;
  *
  */
 public final  class Conversion {
-	public static final String MODELE = "org.formation.zoo.modele.metier";
+	public static final String MODELE = "org.formation.zoo.modele.metier.";
 
 	/**
 	 * 
@@ -41,25 +41,40 @@ public final  class Conversion {
 		Constructor<?> construct =null;
 		
 		ret = new Cage(cp.getX(),cp.getY());
+		//on teste si il ya un occupant
 		if(cp.getCodeAnimal()!= null) {
-			try {
-//				laClasseDeLaBete = Class.forName(MODELE+cp.getCodeAnimal());
-				laClasseDeLaBete = Class.forName(String.join(" ", MODELE, cp.getCodeAnimal()));
+			//si on a une gazelle
+			if(cp.getCodeAnimal().equals("Gazelle")) {
+				lesTypes = new Class<?>[4];
+				lesValeurs = new Object[4];
+				lesTypes[3] = int.class;
+				lesValeurs[3] = cp.getGaz().getLgCornes();
+			}
+			else {
 				lesTypes = new Class<?>[3];
 				lesValeurs = new Object[3];
-				/**
-				 * les types
-				 */
-				lesTypes[0] = String.class;
-				lesTypes[1] = int.class;
-				lesTypes[2] = double.class;
-				/**
-				 * les valeurs
-				 */
-				lesValeurs[0] = cp.getNom();
-				lesValeurs[1] = cp.getAge();
-				lesValeurs[2] = cp.getPoids();
+				
+			}
+			lesTypes = new Class<?>[3];
+			lesValeurs = new Object[3];
+			/**
+			 * les types
+			 */
+			lesTypes[0] = String.class;
+			lesTypes[1] = int.class;
+			lesTypes[2] = double.class;
+			/**
+			 * les valeurs
+			 */
+			lesValeurs[0] = cp.getNom();
+			lesValeurs[1] = cp.getAge();
+			lesValeurs[2] = cp.getPoids();
+			try {
+				laClasseDeLaBete = Class.forName(MODELE+cp.getCodeAnimal());
+//				laClasseDeLaBete = Class.forName(String.join(" ", MODELE, cp.getCodeAnimal()));
+				
 				construct = laClasseDeLaBete.getConstructor(lesTypes);
+//				construct =  laClasseDeLaBete.getDeclaredConstructor(lesTypes);
 				bete = (Animal) construct.newInstance(lesValeurs);
 				ret.ouvrir();
 				ret.entrer(bete);

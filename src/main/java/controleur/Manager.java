@@ -3,15 +3,14 @@
  */
 package controleur;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.formation.zoo.modele.metier.Animal;
-import org.formation.zoo.modele.metier.Cage;
-import org.formation.zoo.modele.metier.Mangeable;
-import org.formation.zoo.modele.technique.BeurkException;
-import org.formation.zoo.modele.technique.CagePleineException;
-import org.formation.zoo.modele.technique.PorteException;
-import org.formation.zoo.stockage.FichierAccess;
+import org.formation.zoo.modele.technique.CageManager;
+import org.formation.zoo.stockage.Dao;
+import org.formation.zoo.stockage.DaoFactory;
+
+import service.CagePOJO;
 
 /**
  * @author algas
@@ -19,19 +18,18 @@ import org.formation.zoo.stockage.FichierAccess;
  */
 public final class Manager {
 	
-	private List<Cage> lesCages;
-	private FichierAccess<Cage> acces;
+	private List<CageManager> lesCages;
+	private Dao<CagePOJO> acces;
 	private static   Manager instance = new Manager();
 	/**
 	 * le constructeur doit etre privé
 	 */
 	private Manager() {
 		lesCages = null;
-		acces = new FichierAccess("zoo.data");
-		init();		
-		
+		acces = DaoFactory.getInstance().getDao();
+		init();
 	}
-	
+
 	
 	/**
 	 * @return instance, l'instance du singleton
@@ -47,7 +45,15 @@ public final class Manager {
 	 */
 	private void init()
 	{
-		lesCages = acces.lireTous();
+		//lesCages = acces.lireTous();
+		List<CagePOJO> tmp  = null;
+		tmp= acces.lireTous();
+		lesCages = new ArrayList<>();
+		for (CagePOJO cagePOJO : tmp) {
+			lesCages.add(new CageManager(cagePOJO, acces));
+			
+		}
+		
 	}
 	
 	/**
@@ -55,11 +61,9 @@ public final class Manager {
 	 */
 	public void nourrir ()
 	{
-		for (int i = 0; i < lesCages.size(); i++) {
-			if (lesCages.get(i).getOccupant() != null)
-			{
-				lesCages.get(i).getOccupant().manger();
-			}
+		for (CageManager cagePOJO : lesCages) {
+			cagePOJO.nourrir();
+			
 		}
 	}
 	
@@ -69,46 +73,46 @@ public final class Manager {
 	 * @param mange indice de la cage de la proie
 	 * @return le texte sur ce qu'il s'est passÃ©
 	 */
-	public String devorer(int mangeur, int mange)
-	{
-		Mangeable laBeteConvoitee = null;
-		String s = "INCOMPATIBLE";
-		if (lesCages.get(mange).getOccupant() != null && lesCages.get(mangeur).getOccupant() != null && lesCages.get(mange).getOccupant() instanceof Mangeable)
-			{
-				lesCages.get(mange).ouvrir();
-				try {
-					laBeteConvoitee = (Mangeable)lesCages.get(mange).sortir();
-				} catch (PorteException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-				try
-				{
-					s = lesCages.get(mangeur).getOccupant().manger(laBeteConvoitee);
-				}
-				catch (BeurkException e)
-				{
-					s = e.getMessage();
-					try {
-						lesCages.get(mange).entrer((Animal)laBeteConvoitee);
-					} catch (PorteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (CagePleineException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					lesCages.get(mange).fermer();
-				}
-		}
-		return s;
-	}
+//	public String devorer(int mangeur, int mange)
+//	{
+//		Mangeable laBeteConvoitee = null;
+//		String s = "INCOMPATIBLE";
+//		if (lesCages.get(mange).getOccupant() != null && lesCages.get(mangeur).getOccupant() != null && lesCages.get(mange).getOccupant() instanceof Mangeable)
+//			{
+//				lesCages.get(mange).ouvrir();
+//				try {
+//					laBeteConvoitee = (Mangeable)lesCages.get(mange).sortir();
+//				} catch (PorteException e2) {
+//					// TODO Auto-generated catch block
+//					e2.printStackTrace();
+//				}
+//				try
+//				{
+//					s = lesCages.get(mangeur).getOccupant().manger(laBeteConvoitee);
+//				}
+//				catch (BeurkException e)
+//				{
+//					s = e.getMessage();
+//					try {
+//						lesCages.get(mange).entrer((Animal)laBeteConvoitee);
+//					} catch (PorteException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					} catch (CagePleineException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
+//					lesCages.get(mange).fermer();
+//				}
+//		}
+//		return s;
+//	}
 	/**
 	 * la methode qui permet de fermer la cage
 	 */
-	public void fermer() {
-		acces.ecrireTous(lesCages);
-	}
+//	public void fermer() {
+//		acces.ecrireTous(lesCages);
+//	}
 	public String[] afficher()
 	{
 		String res [];

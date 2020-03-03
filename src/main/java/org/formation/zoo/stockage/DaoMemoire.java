@@ -6,14 +6,8 @@ package org.formation.zoo.stockage;
 import java.util.List;
 import java.util.Vector;
 
-import org.formation.zoo.modele.metier.Cage;
-import org.formation.zoo.modele.metier.Gazelle;
-import org.formation.zoo.modele.metier.Lion;
-import org.formation.zoo.modele.metier.Singe;
-import org.formation.zoo.modele.technique.CagePleineException;
-import org.formation.zoo.modele.technique.PorteException;
-
 import service.CagePOJO;
+import service.GazellePOJO;
 
 /**
  * @author algas
@@ -60,6 +54,39 @@ public class DaoMemoire implements Dao<CagePOJO> {
 			tmp.setCle(1);
 			elts.add(tmp);
 			
+//			tmp = new CagePOJO();
+//			tmp.setCodeAnimal("Gazelle");
+//			tmp.setCle(2);
+//			tmp.setX(100);
+//			tmp.setY(500);
+//			tmp.setAge(25);
+//			tmp.setPoids(100);
+//			tmp.setGaz(new GazellePOJO());
+//			elts.add(tmp);
+			
+	}
+
+	@Override
+	public void modifier(int cle, CagePOJO obj) {
+		elts.set(cle, obj);
+		
+	}
+
+	@Override
+	public void effacer(CagePOJO obj) {
+		elts.remove(obj);
+	}
+
+	@Override
+	public void ajouter(CagePOJO obj) {
+		elts.add(obj);
+		
+	}
+
+	@Override
+	public void effacer(int cle) {
+		elts.remove(cle);
+		
 	}
 
 

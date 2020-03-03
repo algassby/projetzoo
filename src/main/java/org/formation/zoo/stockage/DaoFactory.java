@@ -5,6 +5,8 @@ package org.formation.zoo.stockage;
 
 import org.formation.zoo.modele.metier.Cage;
 
+import service.CagePOJO;
+
 /**
  * @author algas
  *
@@ -25,8 +27,8 @@ public class DaoFactory {
 		return instance;
 	}
 	
-	public Dao<Cage>getDao(){
-		return new FichierAccess<Cage>("zoo.data");
+	public Dao<CagePOJO>getDao(){
+		return new DaoJDBCImpl();
 	}
 
 }

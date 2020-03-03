@@ -10,6 +10,8 @@ import org.formation.zoo.modele.metier.Singe;
 import org.formation.zoo.modele.technique.CagePleineException;
 import org.formation.zoo.modele.technique.PorteException;
 
+import service.CagePOJO;
+
 /**
  * Classe technique qui gère les accès fichier pour la sauvegarde des animaux du zoo.
  * @author jacques
@@ -88,11 +90,11 @@ public class FichierAccess<T> implements Dao<T>{
 	 * @return la collection lue
 	 */
 	@Override
-	public List<T> lireTous(){
+	public List<CagePOJO> lireTous(){
 		if (elts == null){
 			read();
 		}
-		return (List<T>) elts;
+		return (List<CagePOJO>) elts;
 	}
 	/**
 	 * méthode qui permet l'accès en écriture à l'information (fait partie de l'api)
@@ -102,6 +104,29 @@ public class FichierAccess<T> implements Dao<T>{
 	public void ecrireTous(List<T> lesCages) {
 		elts = (List<T>) lesCages;
 		write();
+	}
+
+	@Override
+	public void modifier(int cle, T obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void effacer(T obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ajouter(T obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void effacer(int cle) {
+		// TODO Auto-generated method stub
 		
 	}
 

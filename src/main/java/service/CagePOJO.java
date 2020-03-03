@@ -16,6 +16,7 @@ public class CagePOJO {
 	private String nom;
 	private int age;
 	private double poids;
+	private GazellePOJO gaz;
 	
 	/**
 	 * initialise  les attributs à null
@@ -28,7 +29,25 @@ public class CagePOJO {
 		nom = null;
 		age = 0;
 		poids = 0;
+		gaz = null;
 	}
+	
+
+	/**
+	 * @return the gaz
+	 */
+	public GazellePOJO getGaz() {
+		return gaz;
+	}
+
+
+	/**
+	 * @param gaz the gaz to set
+	 */
+	public void setGaz(GazellePOJO gaz) {
+		this.gaz = gaz;
+	}
+
 
 	/**
 	 * @return the x
