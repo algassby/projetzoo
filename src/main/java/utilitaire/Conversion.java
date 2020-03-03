@@ -55,11 +55,11 @@ public final  class Conversion {
 				lesValeurs = new Object[3];
 				
 			}
-			lesTypes = new Class<?>[3];
-			lesValeurs = new Object[3];
-			/**
-			 * les types
-			 */
+//			lesTypes = new Class<?>[3];
+//			lesValeurs = new Object[3];
+//			/**
+//			 * les types
+//			 */
 			lesTypes[0] = String.class;
 			lesTypes[1] = int.class;
 			lesTypes[2] = double.class;
