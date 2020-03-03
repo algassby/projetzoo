@@ -3,13 +3,20 @@
  */
 package org.formation.zoo;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
-import org.formation.zoo.modele.metier.Animal;
-import org.formation.zoo.modele.metier.Lion;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.formation.zoo.modele.technique.CageManager;
+import org.formation.zoo.stockage.Dao;
+import org.formation.zoo.stockage.DaoFactory;
 import org.junit.jupiter.api.Test;
 
 import controleur.Manager;
+import service.CagePOJO;
 
 /**
  * @author algas
@@ -17,6 +24,7 @@ import controleur.Manager;
  */
 class TestManager {
 
+	
 	/**
 	 * Test method for {@link controleur.Manager#getInstance()}.
 	 */
@@ -30,7 +38,46 @@ class TestManager {
 		}
 		
 	}
-
+	
+	/**
+	 * Test method for {@link controleur.Manager#Manager()}.
+	 */
+	@Test
+	void testManager() { 
+		try {
+			List<CageManager> listeCageManager = null;
+			assertNull(listeCageManager);
+			assertNotNull(DaoFactory.getInstance().getDao());
+			
+		} catch (Exception e) {
+			fail("le constructeur n'a pas pu faire son boulot");
+		}
+		
+	}
+	/**
+	 * Test method for {@link controleur.Manager#init()}.
+	 */
+	//@Test
+//	void testInit() {
+//		try {
+//			Dao<CagePOJO> acces = null;
+//			List<CageManager> listeCageManager = null;
+//			List<CagePOJO> listeCagePOJO = null;
+//			listeCagePOJO = acces.lireTous();
+//			listeCageManager = new ArrayList<>();
+//			for (CagePOJO cagePOJO : listeCagePOJO) {
+//				listeCageManager.add(new CageManager(cagePOJO, acces));
+//				
+//			}
+//			
+//			
+//		} catch (Exception e) {
+//			fail("la methode init ne marche pas");
+//
+//		}
+//		
+//	}
+	
 	/**
 	 * Test method for {@link controleur.Manager#devorer(int, int)}.
 	 */
