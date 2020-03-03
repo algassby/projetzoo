@@ -70,8 +70,8 @@ public final  class Conversion {
 			lesValeurs[1] = cp.getAge();
 			lesValeurs[2] = cp.getPoids();
 			try {
-				laClasseDeLaBete = Class.forName(MODELE+cp.getCodeAnimal());
-//				laClasseDeLaBete = Class.forName(String.join(" ", MODELE, cp.getCodeAnimal()));
+//				laClasseDeLaBete = Class.forName(MODELE+cp.getCodeAnimal());
+				laClasseDeLaBete = Class.forName(String.join("", MODELE, cp.getCodeAnimal()));
 				
 				construct = laClasseDeLaBete.getConstructor(lesTypes);
 //				construct =  laClasseDeLaBete.getDeclaredConstructor(lesTypes);
