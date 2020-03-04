@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.formation.zoo.controleur.Manager;
 import org.formation.zoo.modele.technique.CageManager;
 import org.formation.zoo.stockage.Dao;
 import org.formation.zoo.stockage.DaoFactory;
 import org.junit.jupiter.api.Test;
 
-import controleur.Manager;
 import service.CagePOJO;
 
 /**
@@ -26,7 +26,7 @@ class TestManager {
 
 	
 	/**
-	 * Test method for {@link controleur.Manager#getInstance()}.
+	 * Test method for {@link org.formation.zoo.controleur.Manager#getInstance()}.
 	 */
 	@Test
 	void testGetInstance() {
@@ -40,7 +40,7 @@ class TestManager {
 	}
 	
 	/**
-	 * Test method for {@link controleur.Manager#Manager()}.
+	 * Test method for {@link org.formation.zoo.controleur.Manager#Manager()}.
 	 */
 	@Test
 	void testManager() { 
