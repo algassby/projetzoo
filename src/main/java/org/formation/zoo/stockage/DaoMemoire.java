@@ -42,15 +42,15 @@ public class DaoMemoire implements Dao<CagePOJO> {
 			tmp = new CagePOJO();
 			tmp.setCodeAnimal("Singe");
 			tmp.setCle(0);
-			tmp.setX(200);
-			tmp.setY(300);
+			tmp.setX(100);
+			tmp.setY(400);
 			tmp.setAge(20);
 			tmp.setPoids(75.0);
 			tmp.setNom("baloo");
 			elts.add(tmp);
 			
 			tmp = new CagePOJO();
-			tmp.setX(350);
+			tmp.setX(150);
 			tmp.setY(400);
 			tmp.setCle(1);
 			elts.add(tmp);
