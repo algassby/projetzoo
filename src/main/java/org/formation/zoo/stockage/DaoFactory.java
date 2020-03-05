@@ -28,7 +28,8 @@ public class DaoFactory {
 	}
 	
 	public Dao<CagePOJO>getDao(){
-		return new DaoJDBCImpl();
+		//return new DaoJDBCImpl();
+		return new DaoMemoire();
 	}
 
 }

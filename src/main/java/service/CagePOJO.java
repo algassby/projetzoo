@@ -18,6 +18,10 @@ public class CagePOJO {
 	private double poids;
 	private GazellePOJO gaz;
 	
+	
+	private String pancarte;
+	private String image;
+	
 	/**
 	 * initialise  les attributs à null
 	 */
@@ -153,6 +157,39 @@ public class CagePOJO {
 		return "CagePOJO [x=" + x + ", y=" + y + ", cle=" + cle + ", codeAnimal=" + codeAnimal + ", nom=" + nom
 				+ ", age=" + age + ", poids=" + poids + ", gaz=" + gaz + "]";
 	}
+
+
+	/**
+	 * @return the pancarte
+	 */
+	public String getPancarte() {
+		return pancarte;
+	}
+
+
+	/**
+	 * @param pancarte the pancarte to set
+	 */
+	public void setPancarte(String pancarte) {
+		this.pancarte = pancarte;
+	}
+
+
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	
 
 }

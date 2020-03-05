@@ -3,16 +3,13 @@
  */
 package org.formation.zoo;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.formation.zoo.controleur.Manager;
-import org.formation.zoo.modele.technique.CageManager;
-import org.formation.zoo.stockage.Dao;
 import org.formation.zoo.stockage.DaoFactory;
 import org.junit.jupiter.api.Test;
 
@@ -45,9 +42,11 @@ class TestManager {
 	@Test
 	void testManager() { 
 		try {
-			List<CageManager> listeCageManager = null;
-			assertNull(listeCageManager);
-			assertNotNull(DaoFactory.getInstance().getDao());
+			List<CagePOJO> res = Manager.getInstance().getAnimaux();
+			assertEquals("baloo 20 ans 75.0 kg", res.get(0).getPancarte());
+			assertEquals("cage vide", res.get(1).getPancarte());
+			assertEquals("images/singe.gif", res.get(0).getImage());
+			assertEquals("images/cage.jpg", res.get(1).getImage());
 			
 		} catch (Exception e) {
 			fail("le constructeur n'a pas pu faire son boulot");

@@ -37,20 +37,21 @@ public class DaoMemoire implements Dao<CagePOJO> {
 	private void init()
 	{
 		CagePOJO tmp = null;
-		elts = new Vector<CagePOJO>();
+		elts = new Vector<>();
 	
 			tmp = new CagePOJO();
 			tmp.setCodeAnimal("Singe");
 			tmp.setCle(0);
-			tmp.setX(100);
-			tmp.setY(200);
+			tmp.setX(200);
+			tmp.setY(300);
 			tmp.setAge(20);
-			tmp.setPoids(75);
+			tmp.setPoids(75.0);
+			tmp.setNom("baloo");
 			elts.add(tmp);
 			
 			tmp = new CagePOJO();
-			tmp.setX(234);
-			tmp.setY(654);
+			tmp.setX(350);
+			tmp.setY(400);
 			tmp.setCle(1);
 			elts.add(tmp);
 			
@@ -89,6 +90,7 @@ public class DaoMemoire implements Dao<CagePOJO> {
 		
 	}
 
+	
 
 
 }

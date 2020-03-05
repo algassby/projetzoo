@@ -5,6 +5,7 @@ package org.formation.zoo.controleur;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import org.formation.zoo.modele.technique.CageManager;
 import org.formation.zoo.stockage.Dao;
@@ -29,7 +30,6 @@ public final class Manager {
 		acces = DaoFactory.getInstance().getDao();
 		init();
 	}
-
 	
 	/**
 	 * @return instance, l'instance du singleton
@@ -37,6 +37,16 @@ public final class Manager {
 	public static Manager getInstance() {
 		
 		return instance;
+	}
+	
+	public List<CagePOJO> getAnimaux(){
+		List<CagePOJO> ret = null;
+		ret = new Vector<>();
+		for(CageManager cm: lesCages ) {
+			ret.add(cm.getVue());
+		}
+		
+		return ret;
 	}
 	
 	/**

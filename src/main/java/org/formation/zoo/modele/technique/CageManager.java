@@ -3,6 +3,8 @@
  */
 package org.formation.zoo.modele.technique;
 
+import java.util.StringJoiner;
+
 import org.formation.zoo.modele.metier.Animal;
 import org.formation.zoo.modele.metier.Cage;
 import org.formation.zoo.stockage.Dao;
@@ -15,7 +17,9 @@ import utilitaire.Conversion;
  * @author algas
  *
  */
-public final class CageManager {
+public final  class CageManager {
+	
+	public final static String IMAGES ="images/";
 
 	private Cage controleur;
 	private CagePOJO vue;
@@ -25,6 +29,34 @@ public final class CageManager {
 		modele  =  dao;
 		vue = pojo;
 		controleur = Conversion.pojoToCage(pojo);
+	}
+	/**
+	 * @return the vue
+	 */
+	public CagePOJO getVue() {
+		String tmp = null;
+		
+		if(vue.getCodeAnimal()!=null) {	
+			tmp = String.join(" ",vue.getNom(),Integer.toString(vue.getAge()),"ans",Double.toString(vue.getPoids()),"kg");
+			vue.setPancarte(tmp);
+			tmp = String.join("", IMAGES,vue.getCodeAnimal().toLowerCase()+".gif");
+		}
+		else
+		{
+		vue.setPancarte("cage vide");
+			tmp = String.join("", IMAGES,"cage.jpg");
+			vue.setImage(tmp);
+		}
+		
+				
+		return vue;
+	}
+	/**
+	 * @param vue the vue to set
+	 */
+	public void setVue(CagePOJO vue) {
+		
+				
 	}
 	public void entrer(Animal a) throws PorteException, CagePleineException{
 	
@@ -46,9 +78,6 @@ public final class CageManager {
 	public String toString() {
 		return controleur.toString();
 	}
-	
-	
-
 	
 	
 }
