@@ -39,7 +39,8 @@ public final  class CageManager {
 		if(vue.getCodeAnimal()!=null) {	
 			tmp = String.join(" ",vue.getNom(),Integer.toString(vue.getAge()),"ans",Double.toString(vue.getPoids()),"kg");
 			vue.setPancarte(tmp);
-			tmp = String.join("", IMAGES,vue.getCodeAnimal().toLowerCase()+".gif");
+			tmp = String.join("", IMAGES,vue.getCodeAnimal().toLowerCase(),".gif");
+			vue.setImage(tmp);
 		}
 		else
 		{
