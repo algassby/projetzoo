@@ -142,7 +142,6 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 	@Override
 	public void effacer(CagePOJO obj) {
 		PreparedStatement prepareStatement = null;
-	
 		String req = "DELETE FROM animal where"+ this.getListe().getClass().getName() +  "= " + obj;
 		//String requete = String.join("","DELETE FROM animal where", Integer.toString(this.getListe().get(tmp.getCle())),"= cle" );
 		
@@ -160,7 +159,6 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 	public void ajouter(CagePOJO obj) {
 		//Statement st = null;
 		PreparedStatement pst = null;
-		
 		
 		String requete = "INSERT INTO animal(codeAnimal,nom,age,poids,x,y) VALUES (?,?,?,?,?,?);";
 		//String requete = String.join("", "INSERT INTO  animal values" () ) VALUES ('Lion','Nash','12','100','503','403');";
