@@ -3,11 +3,15 @@
  */
 package org.formation.zoo.stockage;
 
+import java.awt.Point;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.Vector;
+
+import org.apache.tomcat.websocket.pojo.PojoEndpointBase;
 
 import service.CagePOJO;
 import service.GazellePOJO;
@@ -20,7 +24,9 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 
 	DaoMemoire daomemoire;
 	private DaoORB connecteur;
+	private List<CagePOJO> liste;
 	public DaoJDBCImpl() {
+		liste = new Vector<CagePOJO>();
 		connecteur = new DaoORB();
 		daomemoire = new DaoMemoire();
 	}
@@ -75,47 +81,130 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		
 		return lesCagePojo;
 	}
+	/**
+	 * @return the liste
+	 */
+	public List<CagePOJO> getListe() {
+		return liste;
+	}
+	/**
+	 * @param liste the liste to set
+	 */
+	public void setListe(List<CagePOJO> liste) {
+		this.liste = liste;
+	}
 	@Override
 	public void ecrireTous(List<CagePOJO> elt) {
-		String requete = "INSERT INTO animal VALUES ('', 'Lion','Grizly','12','75');";
-		CagePOJO tmp = null;
+		CagePOJO pojo  = null;
 		Statement st = null;
 		
+		
+//		String requete = "INSERT INTO animal(codeAnimal,nom,age,poids,x,y) VALUES (?,?,?,?,?,?);";
+		String requete = "INSERT INTO animal(codeAnimal,nom,age,poids,x,y) VALUES ('Lion','Nash','12','100','503','403');";
 		try {
-			
-			elt = new Vector<>();
+			//elt = new Vector<>();
 			st = connecteur.getConnection().createStatement();
+//			PreparedStatement pst = connecteur.getConnection().prepareStatement(requete);
+//			pojo = new CagePOJO();
+//			pst.setString(1,"Lion");
+//			pst.setString(2,"lionli");
+//			pst.setInt(3,12);
+//			pst.setDouble(4,50);
+//			pst.setInt(5, 402);
+//			pst.setInt(6, 320);
+//			
+//			int rs = pst.executeUpdate(requete);
 			int rs = st.executeUpdate(requete);
-			if(rs == 1) {
-					
-					elt.add(tmp);
-				
-			}
+			elt.add(pojo);
 			
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		
 		}
 		
 	}
  
 	@Override
 	public void modifier(int cle, CagePOJO obj) {
-		// TODO Auto-generated method stub
+		PreparedStatement prepareStatement = null;
 		
+		String req = "UPDATE FROM animal where"+ this.getListe().get(obj.getCle()) +  "= " + cle;
+		try {
+			prepareStatement = connecteur.getConnection().prepareStatement(req);
+			prepareStatement.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 	}
 	@Override
 	public void effacer(CagePOJO obj) {
-		// TODO Auto-generated method stub
+		PreparedStatement prepareStatement = null;
+	
+		String req = "DELETE FROM animal where"+ this.getListe().getClass().getName() +  "= " + obj;
+		//String requete = String.join("","DELETE FROM animal where", Integer.toString(this.getListe().get(tmp.getCle())),"= cle" );
+		
+		try {
+			prepareStatement = connecteur.getConnection().prepareStatement(req);
+			prepareStatement.setString(1, obj.getCodeAnimal());
+			prepareStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	@Override
 	public void ajouter(CagePOJO obj) {
-		// TODO Auto-generated method stub
+		//Statement st = null;
+		PreparedStatement pst = null;
 		
-	}
+		
+		String requete = "INSERT INTO animal(codeAnimal,nom,age,poids,x,y) VALUES (?,?,?,?,?,?);";
+		//String requete = String.join("", "INSERT INTO  animal values" () ) VALUES ('Lion','Nash','12','100','503','403');";
+//		String requete =  "INSERT INTO animal (idAnimal,codeAnimal,nom,age,poids,x,y) values(null,'"+obj.getCodeAnimal()+"','"+obj.getNom()+
+//				"','"+obj.getAge()+"','"+obj.getPoids()+"',"
+//				+obj.getX()+"','"+obj.getY()+"');'";
+		try {
+			//elt = new Vector<>();
+			//st = connecteur.getConnection().createStatement();
+			pst = connecteur.getConnection().prepareStatement(requete);
+	
+			pst.setString(1,obj.getCodeAnimal());
+			pst.setString(2,obj.getNom());
+			pst.setInt(3,obj.getAge());
+			pst.setDouble(4,obj.getPoids());
+			pst.setInt(5, obj.getX());
+			pst.setInt(6, obj.getX());
+			
+//			
+//			int rs = pst.executeUpdate(requete);
+		    pst.executeUpdate();
+			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	}	
 	@Override
 	public void effacer(int cle) {
-		// TODO Auto-generated method stub
+		CagePOJO tmp = null;
+		PreparedStatement prepareStatement = null;
+		tmp = new CagePOJO();
+		String req = "DELETE FROM animal where"+ this.getListe().get(tmp.getCle()) +  "= " + cle;
+		//String requete = String.join("","DELETE FROM animal where", Integer.toString(this.getListe().get(tmp.getCle())),"= cle" );
+		
+		try {
+			prepareStatement = connecteur.getConnection().prepareStatement(req);
+			prepareStatement.setInt(1, tmp.getCle());
+			prepareStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -128,9 +217,11 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 	public static void main(String [] args) {
 		
 		DaoJDBCImpl daojdbc = new DaoJDBCImpl();
+		daojdbc.ajouter(new CagePOJO());
 		daojdbc.lireTous().forEach(System.out::println);
-		daojdbc.ecrireTous(daojdbc.getDaomemoire().lireTous());
-		daojdbc.lireTous().forEach(System.out::println);
+//		daojdbc.ecrireTous(daojdbc.getDaomemoire().lireTous());
+//		daojdbc.lireTous().forEach(System.out::println);
+	//	daojdbc.ecrireTous(daojdbc.getListe());
 		
 	}
 		

@@ -25,8 +25,8 @@ public  class DaoORB  {
 			 
 			 properties = new Properties();
              this.charger();
-			//connection = DriverManager.getConnection(properties.getProperty("URL"), properties.getProperty("LOGIN"),properties.getProperty("PSWD"));
-             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo","root","");
+			connection = DriverManager.getConnection(properties.getProperty("URL"), properties.getProperty("LOGIN"),properties.getProperty("PSWD"));
+//             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo","root","");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,7 +52,4 @@ public  class DaoORB  {
 //		daoORB.charger();
 	}
 	
-	
-	
-
 }

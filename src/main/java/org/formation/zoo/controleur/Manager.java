@@ -58,11 +58,13 @@ public final class Manager {
 		//lesCages = acces.lireTous();
 		List<CagePOJO> tmp  = null;
 		tmp= acces.lireTous();
+		
 		lesCages = new ArrayList<>();
 		for (CagePOJO cagePOJO : tmp) {
 			lesCages.add(new CageManager(cagePOJO, acces));
 			
 		}
+		this.acces.ecrireTous(tmp);
 		
 	}
 	

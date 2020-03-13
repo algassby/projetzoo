@@ -50,6 +50,8 @@ for(int i = 0;i<zanimaux.size();i++){
 
 <div class="afficheAnimal" >GagaZeleZele 3 ans 48.3 kg</div>
 </div>
+<br>
+
 </article>
 <footer>
 Etat en temps reel...
