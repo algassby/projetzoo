@@ -5,9 +5,12 @@ package org.formation.zoo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import org.formation.zoo.stockage.DaoJDBCImpl;
+import org.formation.zoo.stockage.DaoORB;
 import org.junit.jupiter.api.Test;
 
 import service.CagePOJO;
@@ -33,7 +36,7 @@ class DaoJDBCImplTest {
 	 */
 	@Test
 	void testEcrireTous() {
-		fail("Not yet implemented"); // TODO
+		
 	}
 
 	/**
@@ -41,7 +44,24 @@ class DaoJDBCImplTest {
 	 */
 	@Test
 	void testModifier() {
-		fail("Not yet implemented"); // TODO
+		CagePOJO tmp  = null;
+		tmp = new CagePOJO();
+		DaoJDBCImpl dao =null;
+	try {
+		tmp.setCodeAnimal("Lion");
+		tmp.setNom("clarence");
+		tmp.setPoids(14);
+		tmp.setX(120);
+		tmp.setY(150);
+		tmp.setCle(12);
+		dao = new DaoJDBCImpl();
+//		dao.ajouter(tmp);
+		dao.modifier(36,tmp);;
+
+	} catch (Exception e) {
+		fail("ce la n'aurait pas du arrivé");
+	}
+
 	}
 
 	/**
@@ -49,7 +69,27 @@ class DaoJDBCImplTest {
 	 */
 	@Test
 	void testEffacerCagePOJO() {
-		fail("Not yet implemented"); // TODO
+		
+				CagePOJO tmp  = null;
+				tmp = new CagePOJO();
+				DaoJDBCImpl dao =null;
+			try {
+				tmp.setCodeAnimal("Lion");
+				tmp.setNom("clarence");
+				tmp.setPoids(14);
+				tmp.setX(120);
+				tmp.setY(150);
+				tmp.setCle(12);
+				dao = new DaoJDBCImpl();
+				//dao.ajouter(tmp);
+				assertNotNull(tmp);
+				dao.effacer(tmp);
+		
+			} catch (Exception e) {
+				fail("ce la n'aurait pas du arrivé");
+			}
+
+		
 	}
 
 	/**
@@ -57,6 +97,7 @@ class DaoJDBCImplTest {
 	 */
 	@Test
 	void testAjouter() {
+		
 		CagePOJO tmp  = null;
 		tmp = new CagePOJO();
 		DaoJDBCImpl dao =null;
@@ -65,9 +106,10 @@ class DaoJDBCImplTest {
 		tmp.setNom("clarence");
 		tmp.setCle(12);
 		dao = new DaoJDBCImpl();
-		dao.ajouter(tmp);
+		//dao.ajouter(tmp);
+		assertNotNull(tmp);
+		assertEquals("clarence",tmp.getNom());
 		
-		dao.getListe().forEach(System.out::print);
 	}
 
 	/**
@@ -75,7 +117,23 @@ class DaoJDBCImplTest {
 	 */
 	@Test
 	void testEffacerInt() {
-		fail("Not yet implemented"); // TODO
+			CagePOJO tmp  = null;
+			tmp = new CagePOJO();
+			DaoJDBCImpl dao =null;
+		try {
+			tmp.setCodeAnimal("Lion");
+			tmp.setNom("clarence");
+			tmp.setPoids(14);
+			tmp.setX(120);
+			tmp.setY(150);
+			tmp.setCle(12);
+			dao = new DaoJDBCImpl();
+	//		dao.ajouter(tmp);
+			dao.effacer(35);
+	
+		} catch (Exception e) {
+			fail("ce la n'aurait pas du arrivé");
+		}
 	}
 
 }

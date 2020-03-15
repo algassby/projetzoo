@@ -155,7 +155,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		//String requete = "INSERT INTO animal(codeAnimal,nom,age,poids,x,y) VALUES (?,?,?,?,?,?);";
 		String sql = "INSERT INTO animal values (null, '"+obj.getCodeAnimal()+"','"+obj.getNom()+"',"+obj.getAge()+","+obj.getPoids()+","
 				+ ""+obj.getX()+","+obj.getY()+")";
-		System.out.println(sql);
+		//System.out.println(sql);
 		try {
 			st = connecteur.getConnection().createStatement();
 		    st.executeUpdate(sql);
@@ -236,18 +236,19 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 //		daojdbc.lireTous().forEach(System.out::println);
 	//	daojdbc.ecrireTous(daojdbc.getListe());
 		//System.out.println(daojdbc.getLassId());
-		CagePOJO cp= new CagePOJO();
+	//	CagePOJO cp= new CagePOJO();
 		GazellePOJO gp = new GazellePOJO();
-		gp.setLgCornes(18);
-		cp.setAge(22);
-		cp.setCodeAnimal("Gazelle");
-		cp.setNom("agazel");
-		cp.setPoids(15);
-		cp.setX(100);
-		cp.setY(150);
-		cp.setGaz(gp);
-		cp.setCle(31);
-		daojdbc.effacer(cp);
+		daojdbc.lireTous().forEach(System.out::println);
+//		gp.setLgCornes(18);
+//		cp.setAge(22);
+//		cp.setCodeAnimal("Gazelle");
+//		cp.setNom("agazel");
+//		cp.setPoids(15);
+//		cp.setX(100);
+//		cp.setY(150);
+//		cp.setGaz(gp);
+//		cp.setCle(31);
+//		daojdbc.effacer(cp);
 		
 	}
 		
