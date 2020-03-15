@@ -60,7 +60,14 @@ public class DaoFactory {
 	}
 	
 	public Dao<CagePOJO>getDao(){
-		
+		charger();
+		Class<?> maClass = null;
+		try {
+			maClass = Class.forName(this.getProperties().getProperty("CLASS1"));
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	return new DaoJDBCImpl();
 //		return new DaoMemoire();
 	}
