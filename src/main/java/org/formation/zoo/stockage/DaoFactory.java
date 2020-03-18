@@ -26,7 +26,7 @@ public class DaoFactory {
 		properties = new Properties();
 		charger();
 		try {
-			classe = classe.forName(properties.getProperty("CLASS1"));
+			classe = classe.forName(properties.getProperty("CLASS")).getConstructor(null).newInstance());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,10 +64,13 @@ public class DaoFactory {
 		return new DaoJDBCImpl();
 //		return new DaoMemoire();
 	}
-//	public Class<CagePOJO>getClassDao(){
-//		
-//		return this.classe;
-//		
-//	}
+	public Class<CagePOJO>getClassDao(){
+		
+		
+			return (Class<CagePOJO>) classe;
+		
+		
+		
+	}
 
 }
