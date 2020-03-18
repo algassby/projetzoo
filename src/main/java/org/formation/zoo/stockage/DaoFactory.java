@@ -19,43 +19,46 @@ public class DaoFactory {
 
 	private static DaoFactory instance  = new DaoFactory();
 	Class<?> classe;
+	Dao<CagePOJO> dao;
 	Properties properties;
 	/**
 	 * 
 	 */
+
 	private DaoFactory() {
 		properties = new Properties();
 		charger();
-//		try {
-//			try {
-//				try {
-//					classe = (Class<CagePOJO>) classe.forName(properties.getProperty("CLASS")).getConstructor().newInstance(null);
-//					classe = (Class<?>) Class.forName(properties.getProperty("CLASS")).getConstructor().newInstance(null);
-//					
-//				} catch (IllegalArgumentException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (InvocationTargetException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (NoSuchMethodException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (SecurityException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			} catch (InstantiationException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (IllegalAccessException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			try {
+				try {
+					//classe = (Class<CagePOJO>) classe.forName(properties.getProperty("CLASS")).getConstructor().newInstance(null);
+					classe = (Class<?>) Class.forName(properties.getProperty("CLASS"));
+					dao = (Dao<CagePOJO>) classe.getConstructor(null).newInstance(null);
+					
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchMethodException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SecurityException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -89,9 +92,9 @@ public class DaoFactory {
 		return new DaoJDBCImpl();
 //		return new DaoMemoire();
 	}
-	public Class<CagePOJO>getClassDao(){
+	public Dao<CagePOJO>getClassDao(){
 		
-			return (Class<CagePOJO>) classe;
+			return dao;
 		
 	}
 

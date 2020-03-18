@@ -21,7 +21,7 @@ public final class Manager {
 	
 	private List<CageManager> lesCages;
 	private Dao<CagePOJO> acces;
-	private Class<CagePOJO> classe;
+
 	
 	private static   Manager instance = new Manager();
 	/**
@@ -29,8 +29,8 @@ public final class Manager {
 	 */
 	private Manager() {
 		lesCages = null;
-		acces = DaoFactory.getInstance().getDao();
-		//classe = DaoFactory.getInstance().getClassDao();
+		//acces = DaoFactory.getInstance().getDao();
+		acces = DaoFactory.getInstance().getClassDao();
 
 		init();
 	}
