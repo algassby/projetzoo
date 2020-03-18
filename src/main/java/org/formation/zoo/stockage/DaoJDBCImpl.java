@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.apache.tomcat.websocket.pojo.PojoEndpointBase;
+import org.formation.zoo.modele.technique.CagePleineException;
 
 import service.CagePOJO;
 import service.GazellePOJO;
@@ -82,6 +83,55 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		return lesCagePojo;
 	}
 	/**
+	 * @param list, ajouter un element dans la liste
+	 */
+	@Override
+	public void ecrireTous(List<CagePOJO> elt) {
+				
+		CagePOJO  tmp = null;
+		
+		tmp = new CagePOJO();
+		if(tmp != null) {
+		tmp.setCodeAnimal("Lion");
+		tmp.setNom("Elisa");
+		tmp.setCle(10);
+		tmp.setAge(12);
+		tmp.setPoids(82);
+		tmp.setX(450);
+		tmp.setY(330);
+		this.ajouter(tmp);
+		elt.add(tmp);
+		}
+		
+		tmp = new CagePOJO();
+		if(tmp!=null) {
+			tmp.setCodeAnimal("Singe");
+			tmp.setNom("kiki");
+			tmp.setCle(11);
+			tmp.setAge(11);
+			tmp.setPoids(60);
+			tmp.setX(400);
+			tmp.setY(200);
+			this.ajouter(tmp);
+			elt.add(tmp);
+		
+		}
+		tmp = new CagePOJO();
+		if(tmp!=null) {
+		tmp.setCodeAnimal("Lion");
+		tmp.setNom("BorisJohnson");
+		tmp.setAge(20);
+		tmp.setPoids(80);
+		tmp.setX(400);
+		tmp.setY(469);
+		this.ajouter(tmp);
+		elt.add(tmp);
+	
+		}
+		
+			
+	}
+	/**
 	 * @return the liste
 	 */
 	public List<CagePOJO> getListe() {
@@ -93,10 +143,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 	public void setListe(List<CagePOJO> liste) {
 		this.liste = liste;
 	}
-	@Override
-	public void ecrireTous(List<CagePOJO> elt) {
-				
-	}
+	
  
 	@Override
 	public void modifier(int cle, CagePOJO obj) {
@@ -186,7 +233,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		String requete = "INSERT INTO animal(codeAnimal,nom,age,poids,x,y) VALUES (?,?,?,?,?,?);";
 //		String sql = "INSERT INTO animal values (null, '"+obj.getCodeAnimal()+"','"+obj.getNom()+"',"+obj.getAge()+","+obj.getPoids()+","
 //				+ ""+obj.getX()+","+obj.getY()+")";
-		System.out.println(requete);
+		//System.out.println(requete);
 		try {
 			
 			pst = connecteur.getConnection().prepareStatement(requete);

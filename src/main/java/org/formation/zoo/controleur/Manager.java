@@ -21,7 +21,7 @@ public final class Manager {
 	
 	private List<CageManager> lesCages;
 	private Dao<CagePOJO> acces;
-	private Class<?> classe;
+	private Class<CagePOJO> classe;
 	
 	private static   Manager instance = new Manager();
 	/**
@@ -30,11 +30,10 @@ public final class Manager {
 	private Manager() {
 		lesCages = null;
 		acces = DaoFactory.getInstance().getDao();
-		classe = DaoFactory.getInstance().getClassDao();
+		//classe = DaoFactory.getInstance().getClassDao();
 
 		init();
 	}
-	
 	/**
 	 * @return instance, l'instance du singleton
 	 */
@@ -57,18 +56,25 @@ public final class Manager {
 	 * Méthode privé qui charge le modèle.
 	 * Pour l'instant elle instancie les animaux
 	 */
-	private void init()
+	public void init()
 	{
 		//lesCages = acces.lireTous();
 		List<CagePOJO> tmp  = null;
+		tmp = new Vector<>();
 		tmp= acces.lireTous();
+		//this.acces.ecrireTous(tmp);
+		
 		//tmp = classe.getClass().getM
 		lesCages = new ArrayList<>();
 		for (CagePOJO cagePOJO : tmp) {
 			lesCages.add(new CageManager(cagePOJO, acces));
 			
 		}
-		this.acces.ecrireTous(tmp);
+		this.acces.lireTous();
+		//this.acces.ecrireTous(tmp);
+		//this.acces.ecrireTous(tmp);
+		
+	
 		
 	}
 	

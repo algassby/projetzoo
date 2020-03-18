@@ -61,6 +61,7 @@ public final  class CageManager {
 	}
 	public void entrer(Animal a) throws PorteException, CagePleineException{
 	
+		controleur.ouvrir();
 		controleur.entrer(a);
 		//mettre à jours le pojo
 		//modifier le pojo

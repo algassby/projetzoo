@@ -6,6 +6,7 @@ package org.formation.zoo.stockage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 import org.formation.zoo.modele.metier.Cage;
 import service.CagePOJO;
@@ -25,12 +26,36 @@ public class DaoFactory {
 	private DaoFactory() {
 		properties = new Properties();
 		charger();
-		try {
-			classe = classe.forName(properties.getProperty("CLASS")).getConstructor(null).newInstance());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			try {
+//				try {
+//					classe = (Class<CagePOJO>) classe.forName(properties.getProperty("CLASS")).getConstructor().newInstance(null);
+//					classe = (Class<?>) Class.forName(properties.getProperty("CLASS")).getConstructor().newInstance(null);
+//					
+//				} catch (IllegalArgumentException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (InvocationTargetException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (NoSuchMethodException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (SecurityException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			} catch (InstantiationException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IllegalAccessException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 	}
 	
@@ -66,10 +91,7 @@ public class DaoFactory {
 	}
 	public Class<CagePOJO>getClassDao(){
 		
-		
 			return (Class<CagePOJO>) classe;
-		
-		
 		
 	}
 

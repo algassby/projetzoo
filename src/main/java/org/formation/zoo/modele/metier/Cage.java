@@ -57,14 +57,14 @@ public class Cage implements Serializable{
 		{
 			throw new PorteException();
 		}
-		if (occupant != null) { //déjà occupée
+		if (occupant != null) { //deja occup�
 			throw new CagePleineException();
 		}
 		setOccupant(a);
 	}
 	/**
 	 * 
-	 * @return l'animal qui était dans la cage.
+	 * @return l'animal qui �tait dans la cage.
 	 * Si la cage est vide retourne null
 	 * @throws PorteException si la cage n'est pas ouverte
 	 */
