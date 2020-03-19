@@ -14,6 +14,7 @@ import org.formation.zoo.stockage.DaoORB;
 import org.junit.jupiter.api.Test;
 
 import service.CagePOJO;
+import service.GazellePOJO;
 
 /**
  * @author algas
@@ -44,23 +45,31 @@ class DaoJDBCImplTest {
 	 */
 	@Test
 	void testModifier() {
-		CagePOJO tmp  = null;
-		tmp = new CagePOJO();
 		DaoJDBCImpl dao =null;
+		CagePOJO tmp  = null;
+		GazellePOJO gz = null;
+		gz = new GazellePOJO();
+		gz.setLgCornes(7);
+		tmp = new CagePOJO();
+		
 	try {
-		tmp.setCodeAnimal("Lion");
+		tmp.setCodeAnimal("Gazelle");
 		tmp.setNom("clarence");
 		tmp.setPoids(14);
-		tmp.setX(120);
-		tmp.setY(150);
-		tmp.setCle(12);
+		tmp.setX(222);
+		tmp.setY(333);
+		tmp.setCle(11);
+		tmp.setGaz(gz);
 		dao = new DaoJDBCImpl();
-//		dao.ajouter(tmp);
-		dao.modifier(36,tmp);;
+		//dao.ajouter(tmp);
+		dao.modifier(6,tmp);
+		assertNotNull(tmp);
+		assertEquals("clarence", dao.getNom(6));
+		
 
-	} catch (Exception e) {
-		fail("ce la n'aurait pas du arrivé");
-	}
+		} catch (Exception e) {
+			fail("ce la n'aurait pas du arrivé");
+		}
 
 	}
 
@@ -84,6 +93,8 @@ class DaoJDBCImplTest {
 				//dao.ajouter(tmp);
 				assertNotNull(tmp);
 				dao.effacer(tmp);
+				//assertNull(tmp.getNom(), "l'objet ne devrait pas exister");
+			
 		
 			} catch (Exception e) {
 				fail("ce la n'aurait pas du arrivé");
@@ -98,17 +109,25 @@ class DaoJDBCImplTest {
 	@Test
 	void testAjouter() {
 		
-		CagePOJO tmp  = null;
-		tmp = new CagePOJO();
-		DaoJDBCImpl dao =null;
-	
-		tmp.setCodeAnimal("Lion");
-		tmp.setNom("clarence");
-		tmp.setCle(12);
-		dao = new DaoJDBCImpl();
-		//dao.ajouter(tmp);
-		assertNotNull(tmp);
-		assertEquals("clarence",tmp.getNom());
+		try {
+			CagePOJO tmp  = null;
+			tmp = new CagePOJO();
+			DaoJDBCImpl dao =null;
+		
+			tmp.setCodeAnimal("Singe");
+			tmp.setNom(null);
+			tmp.setCle(15);
+			dao = new DaoJDBCImpl();
+			//dao.ajouter(tmp);
+			assertNotNull(tmp);
+			//assertEquals("clarence",tmp.getNom());
+			assertNull(dao.getNom(63));
+			assertNotEquals("Marie",dao.getNom(63));
+			
+		} catch (Exception e) {
+			fail("cela ne devrait pas arrivé");
+		}
+		
 		
 	}
 
@@ -122,17 +141,18 @@ class DaoJDBCImplTest {
 			DaoJDBCImpl dao =null;
 		try {
 			tmp.setCodeAnimal("Lion");
-			tmp.setNom("clarence");
+			tmp.setNom("Claire");
 			tmp.setPoids(14);
-			tmp.setX(120);
-			tmp.setY(150);
-			tmp.setCle(12);
+			tmp.setX(200);
+			tmp.setY(201);
+			//tmp.setCle(25);
 			dao = new DaoJDBCImpl();
-	//		dao.ajouter(tmp);
-			dao.effacer(35);
+			//dao.ajouter(tmp);
+			dao.effacer(64);
+			//assertNull(dao.getNom(64));
 	
 		} catch (Exception e) {
-			fail("ce la n'aurait pas du arrivé");
+			fail("its not ok");
 		}
 	}
 

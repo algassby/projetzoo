@@ -3,16 +3,12 @@
  */
 package org.formation.zoo.stockage;
 
-import java.awt.Point;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.Vector;
-
-import org.apache.tomcat.websocket.pojo.PojoEndpointBase;
-import org.formation.zoo.modele.technique.CagePleineException;
 
 import service.CagePOJO;
 import service.GazellePOJO;
@@ -23,24 +19,26 @@ import service.GazellePOJO;
  */
 public class DaoJDBCImpl implements Dao<CagePOJO> {
 
-	DaoMemoire daomemoire;
 	private DaoORB connecteur;
 	private List<CagePOJO> liste;
 	public DaoJDBCImpl() {
 		liste = new Vector<>();
 		connecteur = new DaoORB();
-		daomemoire = new DaoMemoire();
 	}
+	/**
+	 * cette methode permet de lister les animaux
+	 */
+	
 	@Override
 	public List<CagePOJO> lireTous() {
-		
-		String req = "SELECT * FROM animal as gauche left join gazelle as droite on gauche.idAnimal = droite.idAnimal;";
 		List<CagePOJO> lesCagePojo = null;
 		CagePOJO tmp = null;
 		GazellePOJO gaz =null;
 		
 		Statement st = null;
 		ResultSet rs = null;
+		String req = null;
+		req = "SELECT * FROM animal as gauche left join gazelle as droite on gauche.idAnimal = droite.idAnimal;";
 		
 		try {
 			lesCagePojo = new Vector<>();
@@ -83,7 +81,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		return lesCagePojo;
 	}
 	/**
-	 * @param list, ajouter un element dans la liste
+	 * @param elt, ajouter un element dans la liste
 	 */
 	@Override
 	public void ecrireTous(List<CagePOJO> elt) {
@@ -92,15 +90,15 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		
 		tmp = new CagePOJO();
 		if(tmp != null) {
-		tmp.setCodeAnimal("Lion");
-		tmp.setNom("Elisa");
-		tmp.setCle(10);
-		tmp.setAge(12);
-		tmp.setPoids(82);
-		tmp.setX(450);
-		tmp.setY(330);
-		this.ajouter(tmp);
-		elt.add(tmp);
+			tmp.setCodeAnimal("Lion");
+			tmp.setNom("Elisa");
+			tmp.setCle(10);
+			tmp.setAge(12);
+			tmp.setPoids(82);
+			tmp.setX(450);
+			tmp.setY(330);
+			this.ajouter(tmp);
+			elt.add(tmp);
 		}
 		
 		tmp = new CagePOJO();
@@ -144,7 +142,10 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		this.liste = liste;
 	}
 	
- 
+ /**
+  * @param cle, la clé de l'animal
+  * @param obj, l'objet permet de recuperer les parametres de l'objet exemple obj.getCle()
+  */
 	@Override
 	public void modifier(int cle, CagePOJO obj) {
 //		 Statement st = null;
@@ -193,6 +194,9 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 			}
 		
 	}
+	/**
+	 * @param obj, effacer l'objet
+	 */
 	@Override
 	public void effacer(CagePOJO obj) {
 		PreparedStatement prepareStatement = null;
@@ -225,6 +229,10 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		}
 		
 	}
+	/**
+	 * ajouter un animal dans la base de donnée, avec une requete preparer,
+	 * vous pouvez tester aussi avec le statement
+	 */
 	@Override
 	public void ajouter(CagePOJO obj) {
 		//Statement st = null;
@@ -233,6 +241,8 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		String requete = "INSERT INTO animal(codeAnimal,nom,age,poids,x,y) VALUES (?,?,?,?,?,?);";
 //		String sql = "INSERT INTO animal values (null, '"+obj.getCodeAnimal()+"','"+obj.getNom()+"',"+obj.getAge()+","+obj.getPoids()+","
 //				+ ""+obj.getX()+","+obj.getY()+")";
+		
+		
 		//System.out.println(requete);
 		try {
 			
@@ -253,7 +263,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		    	String sql1 =  "INSERT INTO gazelle(idAnimal, lgCornes) VALUES (?,?);";
 		    	
 		    	pst = connecteur.getConnection().prepareStatement(sql1);
-		    	System.out.println(sql1);
+		    	//System.out.println(sql1);
 		    	pst.setInt(1, getLassId());
 		    	pst.setInt(2, obj.getGaz().getLgCornes());
 		    	pst.executeUpdate();
@@ -271,21 +281,24 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 			}
 		}
 	
-	}	
+	}
+	/**
+	 * @param cle, effacer un animal dans la table en passant sa clé
+	 */
 	@Override
+	
 	public void effacer(int cle) {
-		CagePOJO tmp = null;
-		PreparedStatement prepareStatement = null;
-		Statement st = null;
-		tmp = new CagePOJO();
-		String req = "DELETE FROM animal where idAnimal="+cle+"" ;
-		String req2 = "DELETE FROM gazelle where idAnimal="+ cle+"";
-		//String requete = String.join("","DELETE FROM animal where", Integer.toString(this.getListe().get(tmp.getCle())),"= cle" );
+		String req =null;
+		String req2 = null;
+		//PreparedStatement prepareStatement = null;
+		Statement statement = null;
+		req = String.join("", "DELETE FROM animal where idAnimal=",Integer.toString(cle) );
+		req2 = String.join("","DELETE FROM gazelle where idAnimal=",Integer.toString(cle));
 		
 		try {
-			st = connecteur.getConnection().createStatement();
-			st.executeUpdate(req);
-			st.executeUpdate(req2);
+			statement = connecteur.getConnection().createStatement();
+			statement.executeUpdate(req);
+			statement.executeUpdate(req2);
 		
 //			prepareStatement = connecteur.getConnection().prepareStatement(req);
 //			prepareStatement.setInt(1, tmp.getCle());
@@ -293,6 +306,12 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				statement.close();
+			} catch (SQLException e2) {
+				// TODO: handle exception
+			}
 		}
 		
 	}
@@ -311,15 +330,47 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			try {
+				st.close();
+			} catch (SQLException e2) {
+				// TODO: handle exception
+			}
+		}
 		return id;
 	}
 	
 	/**
-	 * @return the daomemoire
+	 * 
+	 * 
+	 * @return cle,retourne le nom de l'animal, en donnant la clé
 	 */
-	public DaoMemoire getDaomemoire() {
-		return daomemoire;
+	public String getNom(int cle) {
+		Statement st = null;
+		ResultSet res = null;
+		String req = null;
+		String nom = null;
+		req = "SELECT nom from animal  where idAnimal ="+cle;
+		try {
+			st = connecteur.getConnection().createStatement();
+			res = st.executeQuery(req);
+			res.next();
+			nom = res.getString("nom");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				st.close();
+			} catch (SQLException e2) {
+				// TODO: handle exception
+			}
+		}
+		return nom;
+		
 	}
+	
 	public static void main(String [] args) {
 		
 		DaoJDBCImpl daojdbc = new DaoJDBCImpl();
@@ -348,9 +399,10 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		
 		//daojdbc.ajouter(cp);
 		
-		//daojdbc.effacer(30);	
-		daojdbc.modifier(7, cp);
+		//daojdbc.effacer(65);	
+		//daojdbc.modifier(7, cp);
 		daojdbc.lireTous().forEach(System.out::println);
+//		System.out.println(daojdbc.getNom(1));
 		
 		
 	}

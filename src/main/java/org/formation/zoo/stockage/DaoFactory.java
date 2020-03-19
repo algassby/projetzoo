@@ -22,7 +22,7 @@ public class DaoFactory {
 	Dao<CagePOJO> dao;
 	Properties properties;
 	/**
-	 * 
+	 * initialise les attributs Dao,properties
 	 */
 
 	private DaoFactory() {
@@ -68,7 +68,10 @@ public class DaoFactory {
 	public Properties getProperties() {
 		return properties;
 	}
-
+/**
+ * charge le fichier classConfig.properties qui contient le chemin de la classe à instancier
+ * en se servant de la reflexion 
+ */
 	public void charger() {
 		try {
 			properties.load(new FileInputStream("classConfig.properties"));
@@ -87,13 +90,17 @@ public class DaoFactory {
 		return instance;
 	}
 	
-	public Dao<CagePOJO>getDao(){
+	/*public Dao<CagePOJO>getDao(){
 	
 		return new DaoJDBCImpl();
-//		return new DaoMemoire();
-	}
+		return new DaoMemoire();
+	}*/
+	
+	/**
+	 * 
+	 * @return dao, retourne le Dao souhaitez, DaoMemoire, DaoJDBCImpl...
+	 */
 	public Dao<CagePOJO>getClassDao(){
-		
 			return dao;
 		
 	}

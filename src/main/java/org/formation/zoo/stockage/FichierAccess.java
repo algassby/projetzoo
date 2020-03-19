@@ -76,7 +76,7 @@ public class FichierAccess<T> implements Dao<T>{
 		}
 	}
 	/**
-	 * méthode privée qui rempli la liste si aucun fichier n'est trouvé
+	 * methode qui  qui rempli la liste si aucun fichier n'est trouv�
 	 */
 		public String getFichier() {
 		return fichier;
@@ -86,7 +86,7 @@ public class FichierAccess<T> implements Dao<T>{
 		this.fichier = fichier;
 	}
 	/**
-	 * méthode qui permet l'accès en lecture à l'information (fait partie de l'api)
+	 *methode qui permet l'acces et la  lecture � l'information (fait partie de l'api)
 	 * @return la collection lue
 	 */
 	@Override
