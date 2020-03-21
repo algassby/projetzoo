@@ -157,7 +157,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 //				+ " x = "+obj.getX()+", y = "+obj.getY()+" where idAnimal = "+cle+"  ";
 
 		    req = "UPDATE animal set nom =?, age = ?, poids = ?, x = ?, y = ?, cle = ? where idAnimal = ? ";
-//			System.out.println(req);
+
 			try {
 				prepareStatement = connecteur.getConnection().prepareStatement(req);
 				prepareStatement.setString(1, obj.getNom());
