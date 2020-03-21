@@ -156,7 +156,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 //		 req = "UPDATE animal set nom ='"+obj.getNom()+"', age = "+obj.getAge()+", poids = "+obj.getPoids()+","
 //				+ " x = "+obj.getX()+", y = "+obj.getY()+" where idAnimal = "+cle+"  ";
 
-		    req = "UPDATE animal set nom =?, age = ?, poids = ?, x = ?, y = ? where idAnimal = ? ";
+		    req = "UPDATE animal set nom =?, age = ?, poids = ?, x = ?, y = ?, cle = ? where idAnimal = ? ";
 //			System.out.println(req);
 			try {
 				prepareStatement = connecteur.getConnection().prepareStatement(req);
@@ -165,7 +165,8 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 				prepareStatement.setDouble(3, obj.getPoids());
 				prepareStatement.setInt(4, obj.getX());
 				prepareStatement.setInt(5, obj.getY());
-				prepareStatement.setInt(6, cle);
+				prepareStatement.setString(6, obj.getCodeAnimal());
+				prepareStatement.setInt(7, cle);
 //				st = connecteur.getConnection().createStatement();
 			    prepareStatement.executeUpdate();
 //				st.executeUpdate(req);
@@ -387,7 +388,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		
 		cp.setAge(2);
 		cp.setCodeAnimal("Gazelle");
-		cp.setNom("EliotLea");
+		cp.setNom("LouisLEN");
 		cp.setPoids(80);
 		cp.setX(600);
 		cp.setY(500);
