@@ -16,9 +16,9 @@ public class AnimalPOJO implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private byte idAnimal;
+	private int idAnimal;
 
-	private byte age;
+	private int age;
 
 	private String codeAnimal;
 
@@ -31,26 +31,26 @@ public class AnimalPOJO implements Serializable {
 	private int y;
 
 	//bi-directional one-to-one association to Gazelle
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idAnimal", referencedColumnName="idAnimal", insertable=false, updatable=false)
 	private Gazelle gazelle;
 
 	public AnimalPOJO() {
 	}
 
-	public byte getIdAnimal() {
+	public int getIdAnimal() {
 		return this.idAnimal;
 	}
 
-	public void setIdAnimal(byte idAnimal) {
+	public void setIdAnimal(int idAnimal) {
 		this.idAnimal = idAnimal;
 	}
 
-	public byte getAge() {
+	public int getAge() {
 		return this.age;
 	}
 
-	public void setAge(byte age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 
@@ -97,6 +97,8 @@ public class AnimalPOJO implements Serializable {
 	public Gazelle getGazelle() {
 		return this.gazelle;
 	}
+	
+	
 
 	@Override
 	public String toString() {

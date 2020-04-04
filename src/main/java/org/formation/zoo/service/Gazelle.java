@@ -5,52 +5,69 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the gazelle database table.
  * 
  */
 @Entity
-@NamedQuery(name="Gazelle.findAll", query="SELECT g FROM Gazelle g")
+@NamedQuery(name = "Gazelle.findAll", query = "SELECT g FROM Gazelle g")
 public class Gazelle implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private byte id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 
-	private byte lgCornes;
+	private int idAnimal;
 
-	//bi-directional one-to-one association to AnimalPOJO
+	private int lgCornes;
+
+	// bi-directional one-to-one association to AnimalPOJO
 //	@OneToOne(mappedBy="gazelle")
-//	private AnimalPOJO animal;
- 
+
+	// private AnimalPOJO animal;
+
 	public Gazelle() {
 	}
 
-	public byte getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(byte id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public byte getLgCornes() {
+	public int getLgCornes() {
 		return this.lgCornes;
 	}
 
-	public void setLgCornes(byte lgCornes) {
+	public void setLgCornes(int lgCornes) {
 		this.lgCornes = lgCornes;
+	}
+
+	/**
+	 * @return the idAnimal
+	 */
+	public int getIdAnimal() {
+		return idAnimal;
+	}
+
+	/**
+	 * @param idAnimal the idAnimal to set
+	 */
+	public void setIdAnimal(int idAnimal) {
+		this.idAnimal = idAnimal;
 	}
 
 	@Override
 	public String toString() {
-		return "Gazelle [id=" + id + ", lgCornes=" + lgCornes + "]";
+		return "Gazelle [id=" + id + ", idAnimal=" + idAnimal + ", lgCornes=" + lgCornes + "]";
 	}
 	
 	
 
+	
 //	public AnimalPOJO getAnimal() {
 //		return this.animal;
 //	}

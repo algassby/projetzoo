@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.formation.zoo.service.AnimalPOJO;
+import org.formation.zoo.service.Gazelle;
 
 
 
@@ -80,7 +81,23 @@ public class AccesJPAImplt<T> implements Dao<T> {
 		AccesJPAImplt<AnimalPOJO> jp = null;
 		AnimalPOJO tmp = null;
 		tmp = new AnimalPOJO();
+		Gazelle gp = new Gazelle();
 		
+		tmp.setIdAnimal(9);
+		tmp.setAge(2);
+		tmp.setCodeAnimal("Gazelle");
+		tmp.setNom("LouisLEN");
+		tmp.setPoids(80);
+		tmp.setX(600);
+		tmp.setY(500);
+		
+		gp.setId(11);
+		
+		gp.setLgCornes(12);
+		
+		gp.setIdAnimal(tmp.getIdAnimal());
+		
+		tmp.setGazelle(gp);
 		
 		jp = new AccesJPAImplt<>();
 		jp.lireTous().forEach(System.out::println);
