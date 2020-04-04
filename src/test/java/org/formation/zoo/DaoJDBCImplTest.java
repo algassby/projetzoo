@@ -9,12 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import org.formation.zoo.service.CagePOJO;
+import org.formation.zoo.service.GazellePOJO;
 import org.formation.zoo.stockage.DaoJDBCImpl;
 import org.formation.zoo.stockage.DaoORB;
 import org.junit.jupiter.api.Test;
-
-import service.CagePOJO;
-import service.GazellePOJO;
 
 /**
  * @author algas
@@ -41,7 +40,7 @@ class DaoJDBCImplTest {
 	}
 
 	/**
-	 * Test method for {@link org.formation.zoo.stockage.DaoJDBCImpl#modifier(int, service.CagePOJO)}.
+	 * Test method for {@link org.formation.zoo.stockage.DaoJDBCImpl#modifier(int, org.formation.zoo.service.CagePOJO)}.
 	 */
 	@Test
 	void testModifier() {
@@ -74,7 +73,7 @@ class DaoJDBCImplTest {
 	}
 
 	/**
-	 * Test method for {@link org.formation.zoo.stockage.DaoJDBCImpl#effacer(service.CagePOJO)}.
+	 * Test method for {@link org.formation.zoo.stockage.DaoJDBCImpl#effacer(org.formation.zoo.service.CagePOJO)}.
 	 */
 	@Test
 	void testEffacerCagePOJO() {
@@ -104,7 +103,7 @@ class DaoJDBCImplTest {
 	}
 
 	/**
-	 * Test method for {@link org.formation.zoo.stockage.DaoJDBCImpl#ajouter(service.CagePOJO)}.
+	 * Test method for {@link org.formation.zoo.stockage.DaoJDBCImpl#ajouter(org.formation.zoo.service.CagePOJO)}.
 	 */
 	@Test
 	void testAjouter() {

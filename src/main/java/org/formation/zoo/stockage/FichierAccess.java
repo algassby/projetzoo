@@ -9,8 +9,7 @@ import org.formation.zoo.modele.metier.Lion;
 import org.formation.zoo.modele.metier.Singe;
 import org.formation.zoo.modele.technique.CagePleineException;
 import org.formation.zoo.modele.technique.PorteException;
-
-import service.CagePOJO;
+import org.formation.zoo.service.CagePOJO;
 
 /**
  * Classe technique qui gère les accès fichier pour la sauvegarde des animaux du zoo.
@@ -90,11 +89,11 @@ public class FichierAccess<T> implements Dao<T>{
 	 * @return la collection lue
 	 */
 	@Override
-	public List<CagePOJO> lireTous(){
+	public List<T> lireTous(){
 		if (elts == null){
 			read();
 		}
-		return (List<CagePOJO>) elts;
+		return (List<T>) elts;
 	}
 	/**
 	 * méthode qui permet l'accès en écriture à l'information (fait partie de l'api)

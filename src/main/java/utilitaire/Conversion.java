@@ -9,8 +9,7 @@ import org.formation.zoo.modele.metier.Animal;
 import org.formation.zoo.modele.metier.Cage;
 import org.formation.zoo.modele.technique.CagePleineException;
 import org.formation.zoo.modele.technique.PorteException;
-
-import service.CagePOJO;
+import org.formation.zoo.service.CagePOJO;
 
 /**
  * classe boite à outils

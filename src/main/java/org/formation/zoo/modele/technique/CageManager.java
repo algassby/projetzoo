@@ -7,10 +7,9 @@ import java.util.StringJoiner;
 
 import org.formation.zoo.modele.metier.Animal;
 import org.formation.zoo.modele.metier.Cage;
+import org.formation.zoo.service.CagePOJO;
 import org.formation.zoo.stockage.Dao;
 
-
-import service.CagePOJO;
 import utilitaire.Conversion;
 
 /**

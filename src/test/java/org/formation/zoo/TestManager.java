@@ -10,10 +10,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.List;
 
 import org.formation.zoo.controleur.Manager;
+import org.formation.zoo.service.CagePOJO;
 import org.formation.zoo.stockage.DaoFactory;
 import org.junit.jupiter.api.Test;
-
-import service.CagePOJO;
 
 /**
  * @author algas

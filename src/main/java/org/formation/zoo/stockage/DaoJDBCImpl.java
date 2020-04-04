@@ -10,8 +10,8 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Vector;
 
-import service.CagePOJO;
-import service.GazellePOJO;
+import org.formation.zoo.service.CagePOJO;
+import org.formation.zoo.service.GazellePOJO;
 
 /**
  * @author algas
@@ -58,7 +58,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 						tmp.setCodeAnimal(rs.getString("codeAnimal"));
 						
 						//si c'est une gazelle
-						if (tmp.getCodeAnimal().contentEquals("Gazelle")) {
+						if (tmp.getCodeAnimal().equals("Gazelle")) {
 							gaz = new GazellePOJO();
 							gaz.setId(rs.getInt("id"));
 							gaz.setIdAnimal(rs.getInt("idAnimal"));

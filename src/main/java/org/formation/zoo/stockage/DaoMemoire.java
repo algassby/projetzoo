@@ -6,8 +6,8 @@ package org.formation.zoo.stockage;
 import java.util.List;
 import java.util.Vector;
 
-import service.CagePOJO;
-import service.GazellePOJO;
+import org.formation.zoo.service.CagePOJO;
+import org.formation.zoo.service.GazellePOJO;
 
 /**
  * @author algas

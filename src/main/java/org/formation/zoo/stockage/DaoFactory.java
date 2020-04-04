@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 import org.formation.zoo.modele.metier.Cage;
-import service.CagePOJO;
+import org.formation.zoo.service.CagePOJO;
 
 /**
  * @author algas

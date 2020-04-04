@@ -1,7 +1,7 @@
 /**
  * 
  */
-package service;
+package org.formation.zoo.service;
 
 /**
  * @author algas

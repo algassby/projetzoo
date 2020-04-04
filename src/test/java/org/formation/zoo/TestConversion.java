@@ -6,9 +6,9 @@ package org.formation.zoo;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.formation.zoo.modele.metier.Cage;
+import org.formation.zoo.service.CagePOJO;
 import org.junit.jupiter.api.Test;
 
-import service.CagePOJO;
 import utilitaire.Conversion;
 
 /**
@@ -18,7 +18,7 @@ import utilitaire.Conversion;
 class TestConversion {
 
 	/**
-	 * Test method for {@link utilitaire.Conversion#pojoToCage(service.CagePOJO)}.
+	 * Test method for {@link utilitaire.Conversion#pojoToCage(org.formation.zoo.service.CagePOJO)}.
 	 */
 	@Test
 	void testPojoToCage() {

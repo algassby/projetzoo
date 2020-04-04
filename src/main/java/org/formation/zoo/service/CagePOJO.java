@@ -1,7 +1,12 @@
 /**
  * 
  */
-package service;
+package org.formation.zoo.service;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 /**
  * @author algas
@@ -9,6 +14,7 @@ package service;
  */
 public class CagePOJO {
 
+	@Column
 	private int x;
 	private int y;
 	private int cle;

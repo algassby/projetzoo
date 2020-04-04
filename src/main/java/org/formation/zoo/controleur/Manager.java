@@ -8,10 +8,9 @@ import java.util.List;
 import java.util.Vector;
 
 import org.formation.zoo.modele.technique.CageManager;
+import org.formation.zoo.service.CagePOJO;
 import org.formation.zoo.stockage.Dao;
 import org.formation.zoo.stockage.DaoFactory;
-
-import service.CagePOJO;
 
 /**
  * @author algas
