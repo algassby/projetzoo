@@ -20,11 +20,11 @@ import org.formation.zoo.service.Gazelle;
  * @author algas
  *
  */
-public class AccesJPAImplt<T> implements Dao<T> {
+public class AccesJPAImpl<T> implements Dao<T> {
 
 	private Logger logger;
 	private EntityManager em;
-	public AccesJPAImplt() {
+	public AccesJPAImpl() {
 		logger = Logger.getLogger("logger");
 		EntityManagerFactory emf = null;
 		emf = Persistence.createEntityManagerFactory("projetzoo");
@@ -63,10 +63,13 @@ public class AccesJPAImplt<T> implements Dao<T> {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void effacer(int cle) {
-		// TODO Auto-generated method stub
-		
+		T obj = null;
+		em.getTransaction().begin();
+		obj = (T) em.createNamedQuery("find").setParameter("idAnimal", cle).getSingleResult();
+		em.remove(obj);
 	}
 
 	@Override
@@ -78,7 +81,7 @@ public class AccesJPAImplt<T> implements Dao<T> {
 	}
 	
 	public static void main(String []args) {
-		AccesJPAImplt<AnimalPOJO> jp = null;
+		AccesJPAImpl<AnimalPOJO> jp = null;
 		AnimalPOJO tmp = null;
 		tmp = new AnimalPOJO();
 		Gazelle gp = new Gazelle();
@@ -90,7 +93,7 @@ public class AccesJPAImplt<T> implements Dao<T> {
 		tmp.setPoids(80);
 		tmp.setX(600);
 		tmp.setY(500);
-		
+
 		//la gazelle
 		gp.setId(16);
 		
@@ -100,9 +103,12 @@ public class AccesJPAImplt<T> implements Dao<T> {
 		
 		tmp.setGazelle(gp);
 		
-		jp = new AccesJPAImplt<>();
+		jp = new AccesJPAImpl<>();
 		//jp.ajouter(tmp);
+		//jp.effacer(16);
+		
 		jp.lireTous().forEach(System.out::println);
+		
 		
 		
 		

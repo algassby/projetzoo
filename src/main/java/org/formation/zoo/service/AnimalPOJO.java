@@ -10,7 +10,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="animal")
-@NamedQuery(name="findAll", query="SELECT a FROM AnimalPOJO a")
+@NamedQueries({@NamedQuery(name="findAll", query="SELECT a FROM AnimalPOJO a"),
+		@NamedQuery(name="find", query="SELECT a FROM AnimalPOJO a WHERE a.idAnimal= :idAnimal")
+})
+
 public class AnimalPOJO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
