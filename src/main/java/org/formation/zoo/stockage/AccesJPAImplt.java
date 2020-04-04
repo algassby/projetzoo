@@ -82,16 +82,17 @@ public class AccesJPAImplt<T> implements Dao<T> {
 		AnimalPOJO tmp = null;
 		tmp = new AnimalPOJO();
 		Gazelle gp = new Gazelle();
-		
-		tmp.setIdAnimal(9);
-		tmp.setAge(2);
+		//l'animal
+		tmp.setIdAnimal(16);
+		tmp.setAge(10);
 		tmp.setCodeAnimal("Gazelle");
 		tmp.setNom("LouisLEN");
 		tmp.setPoids(80);
 		tmp.setX(600);
 		tmp.setY(500);
 		
-		gp.setId(11);
+		//la gazelle
+		gp.setId(16);
 		
 		gp.setLgCornes(12);
 		
@@ -100,8 +101,9 @@ public class AccesJPAImplt<T> implements Dao<T> {
 		tmp.setGazelle(gp);
 		
 		jp = new AccesJPAImplt<>();
+		//jp.ajouter(tmp);
 		jp.lireTous().forEach(System.out::println);
-		jp.ajouter(tmp);
+		
 		
 		
 	}

@@ -33,7 +33,8 @@ public class DaoFactory {
 				try {
 					//classe = (Class<CagePOJO>) classe.forName(properties.getProperty("CLASS")).getConstructor().newInstance(null);
 					classe = (Class<?>) Class.forName(properties.getProperty("CLASS"));
-					dao = (Dao<CagePOJO>) classe.getConstructor(null).newInstance(null);
+					//dao = (Dao<CagePOJO>) classe.getConstructor(null).newInstance(null);
+					dao = (Dao<CagePOJO>) classe.getDeclaredConstructor(null).newInstance(null);
 					
 				} catch (IllegalArgumentException e) {
 					// TODO Auto-generated catch block

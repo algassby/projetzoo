@@ -153,32 +153,32 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		 String sql1 = null;
 		 String req = null;
 		
-//		 req = "UPDATE animal set nom ='"+obj.getNom()+"', age = "+obj.getAge()+", poids = "+obj.getPoids()+","
-//				+ " x = "+obj.getX()+", y = "+obj.getY()+" where idAnimal = "+cle+"  ";
+		 req = "UPDATE animal set nom ='"+obj.getNom()+"', age = "+obj.getAge()+", poids = "+obj.getPoids()+","
+				+ " x = "+obj.getX()+", y = "+obj.getY()+" where idAnimal = "+cle+"  ";
 
-		    req = "UPDATE animal set nom =?, age = ?, poids = ?, x = ?, y = ?, cle = ? where idAnimal = ? ";
+		   // req = "UPDATE animal set nom =?, age = ?, poids = ?, x = ?, y = ?, cle = ? where idAnimal = ? ";
 
 			try {
 				prepareStatement = connecteur.getConnection().prepareStatement(req);
-				prepareStatement.setString(1, obj.getNom());
-				prepareStatement.setInt(2, obj.getAge());
-				prepareStatement.setDouble(3, obj.getPoids());
-				prepareStatement.setInt(4, obj.getX());
-				prepareStatement.setInt(5, obj.getY());
-				prepareStatement.setString(6, obj.getCodeAnimal());
-				prepareStatement.setInt(7, cle);
+//				prepareStatement.setString(1, obj.getNom());
+//				prepareStatement.setInt(2, obj.getAge());
+//				prepareStatement.setDouble(3, obj.getPoids());
+//				prepareStatement.setInt(4, obj.getX());
+//				prepareStatement.setInt(5, obj.getY());
+//				prepareStatement.setString(6, obj.getCodeAnimal());
+//				prepareStatement.setInt(7, cle);
 //				st = connecteur.getConnection().createStatement();
 			    prepareStatement.executeUpdate();
 //				st.executeUpdate(req);
 			    if(obj.getCodeAnimal().equals("Gazelle"))
 			    {
-//			    	sql1 = "UPDATE gazelle set lgCornes = '"+obj.getGaz().getLgCornes()+"  "+"'";
-			    	 sql1 = "UPDATE gazelle set lgCornes = ?";
+			    	sql1 = "UPDATE gazelle set lgCornes = '"+obj.getGaz().getLgCornes()+"  "+"'";
+			    	 //sql1 = "UPDATE gazelle set lgCornes = ?";
 			    	 prepareStatement = connecteur.getConnection().prepareStatement(sql1);
 //			    	 System.out.println(sql1);
 //			    	 st.executeUpdate(sql1);
 			    	
-			    	 prepareStatement.setObject(1, obj.getGaz().getLgCornes());
+//			    	 prepareStatement.setObject(1, obj.getGaz().getLgCornes());
 
 			    	 prepareStatement.executeUpdate();
 			    }
