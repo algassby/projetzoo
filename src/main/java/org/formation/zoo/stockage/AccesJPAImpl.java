@@ -53,13 +53,23 @@ public class AccesJPAImpl<T> implements Dao<T> {
 
 	@Override
 	public void modifier(int cle, T obj) {
-		// TODO Auto-generated method stub
+	
+	
 		
+	}
+	@Override
+	public void modifier(T obj) {
+		em.getTransaction().begin();
+		em.merge(obj);
+		em.getTransaction().commit();
 	}
 
 	@Override
 	public void effacer(T obj) {
-		// TODO Auto-generated method stub
+		
+		em.getTransaction().begin();
+		em.remove(obj);
+		em.getTransaction().commit();
 		
 	}
 
@@ -70,6 +80,8 @@ public class AccesJPAImpl<T> implements Dao<T> {
 		em.getTransaction().begin();
 		obj = (T) em.createNamedQuery("find").setParameter("idAnimal", cle).getSingleResult();
 		em.remove(obj);
+		em.getTransaction().commit();
+		
 	}
 
 	@Override
@@ -86,33 +98,34 @@ public class AccesJPAImpl<T> implements Dao<T> {
 		tmp = new AnimalPOJO();
 		Gazelle gp = new Gazelle();
 		//l'animal
-		tmp.setIdAnimal(16);
+		tmp.setIdAnimal(14);
 		tmp.setAge(10);
-		tmp.setCodeAnimal("Gazelle");
-		tmp.setNom("LouisLEN");
+		tmp.setCodeAnimal("Singe");
+		tmp.setNom("Lucie");
 		tmp.setPoids(80);
-		tmp.setX(600);
+		tmp.setX(500);
 		tmp.setY(500);
 
 		//la gazelle
-		gp.setId(16);
+		gp.setId(17);
 		
 		gp.setLgCornes(12);
 		
 		gp.setIdAnimal(tmp.getIdAnimal());
 		
-		tmp.setGazelle(gp);
+//		tmp.setGazelle(gp);
 		
 		jp = new AccesJPAImpl<>();
-		//jp.ajouter(tmp);
+		jp.ajouter(tmp);
 		//jp.effacer(16);
+		//jp.effacer(tmp);
+		//jp.modifier(tmp);
 		
 		jp.lireTous().forEach(System.out::println);
 		
 		
-		
-		
 	}
+
 	
 	
 }

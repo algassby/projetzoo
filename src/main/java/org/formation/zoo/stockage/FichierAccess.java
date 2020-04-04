@@ -129,6 +129,12 @@ public class FichierAccess<T> implements Dao<T>{
 		
 	}
 
+	@Override
+	public void modifier(T obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	
 

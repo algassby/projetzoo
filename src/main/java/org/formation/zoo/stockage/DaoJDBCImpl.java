@@ -407,6 +407,11 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		
 		
 	}
+	@Override
+	public void modifier(CagePOJO obj) {
+		// TODO Auto-generated method stub
+		
+	}
 		
 }
 
