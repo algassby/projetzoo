@@ -9,9 +9,8 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
-import org.formation.zoo.service.AnimalPOJO;
-import org.formation.zoo.service.Gazelle;
+import org.formation.zoo.service.CagePOJO;
+import org.formation.zoo.service.GazellePOJO;
 
 
 
@@ -93,12 +92,12 @@ public class AccesJPAImpl<T> implements Dao<T> {
 	}
 	
 	public static void main(String []args) {
-		AccesJPAImpl<AnimalPOJO> jp = null;
-		AnimalPOJO tmp = null;
-		tmp = new AnimalPOJO();
-		Gazelle gp = new Gazelle();
+		AccesJPAImpl<CagePOJO> jp = null;
+		CagePOJO tmp = null;
+		tmp = new CagePOJO();
+		GazellePOJO gp = new GazellePOJO();
 		//l'animal
-		tmp.setIdAnimal(14);
+		tmp.setCle(15);
 		tmp.setAge(10);
 		tmp.setCodeAnimal("Singe");
 		tmp.setNom("Lucie");
@@ -107,17 +106,18 @@ public class AccesJPAImpl<T> implements Dao<T> {
 		tmp.setY(500);
 
 		//la gazelle
-		gp.setId(17);
+		gp.setId(20);
+		
 		
 		gp.setLgCornes(12);
 		
-		gp.setIdAnimal(tmp.getIdAnimal());
+		gp.setIdAnimal(tmp.getCle());
 		
-//		tmp.setGazelle(gp);
+		tmp.setGaz(gp);
 		
 		jp = new AccesJPAImpl<>();
-		jp.ajouter(tmp);
-		//jp.effacer(16);
+		//jp.ajouter(tmp);
+		jp.effacer(15);
 		//jp.effacer(tmp);
 		//jp.modifier(tmp);
 		

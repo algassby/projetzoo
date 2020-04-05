@@ -5,28 +5,58 @@ package org.formation.zoo.service;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author algas
  *
  */
-public class CagePOJO {
 
-	@Column
+/**
+ * The persistent class for the animal database table.
+ * 
+ */
+@Entity
+@Table(name="animal")
+@NamedQueries({@NamedQuery(name="findAll", query="SELECT a FROM CagePOJO a"),
+		@NamedQuery(name="find", query="SELECT c FROM CagePOJO c WHERE c.cle= :idAnimal")
+})
+public class CagePOJO implements Serializable {
+
+	@Column(name = "idAnimal")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int cle;
+	
 	private int x;
 	private int y;
-	private int cle;
+	//@Column(name = "idAnimal")
+	//private int cle;
 	private String codeAnimal;//type de l'animal
 	private String nom;
 	private int age;
 	private double poids;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idAnimal", referencedColumnName = "idAnimal",insertable = false, updatable = false)
 	private GazellePOJO gaz;
 	
-	
+	@Transient
 	private String pancarte;
+	@Transient
 	private String image;
+	
 	
 	/**
 	 * initialise  les attributs à null
