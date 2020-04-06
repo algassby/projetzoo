@@ -96,6 +96,18 @@ public class DaoMemoire implements Dao<CagePOJO> {
 		
 	}
 
+	@Override
+	public int getNombreEnregistrement() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public CagePOJO getPersonne(int cle) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 

@@ -91,6 +91,14 @@ public class AccesJPAImpl<T> implements Dao<T> {
 		
 	}
 	
+	public int getNombreEnregistrement() {
+		return em.createNamedQuery("findAll").getResultList().size();
+	}
+	@SuppressWarnings("unchecked")
+	public T getPersonne(int cle) {
+		return (T) em.createNamedQuery("find").setParameter("idAnimal", cle).getSingleResult();
+	}
+	
 	public static void main(String []args) {
 		AccesJPAImpl<CagePOJO> jp = null;
 		CagePOJO tmp = null;
@@ -114,15 +122,16 @@ public class AccesJPAImpl<T> implements Dao<T> {
 		gp.setIdAnimal(tmp.getCle());
 		
 		tmp.setGaz(gp);
-		
 		jp = new AccesJPAImpl<>();
 		//jp.ajouter(tmp);
-		jp.effacer(15);
+		//jp.effacer(15);
 		//jp.effacer(tmp);
 		//jp.modifier(tmp);
 		
 		jp.lireTous().forEach(System.out::println);
+		System.out.println(jp.getNombreEnregistrement());
 		
+		System.out.println(jp.getPersonne(9));
 		
 	}
 

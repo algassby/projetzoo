@@ -30,7 +30,8 @@ import javax.persistence.Transient;
 @Entity
 @Table(name="animal")
 @NamedQueries({@NamedQuery(name="findAll", query="SELECT a FROM CagePOJO a"),
-		@NamedQuery(name="find", query="SELECT c FROM CagePOJO c WHERE c.cle= :idAnimal")
+		@NamedQuery(name="find", query="SELECT c FROM CagePOJO c WHERE c.cle= :idAnimal"),
+		@NamedQuery(name="count", query="SELECT COUNT(c.cle) FROM CagePOJO c GROUP BY c.cle")
 })
 public class CagePOJO implements Serializable {
 

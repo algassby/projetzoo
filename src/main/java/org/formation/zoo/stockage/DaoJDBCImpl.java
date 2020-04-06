@@ -412,6 +412,16 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public int getNombreEnregistrement() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public CagePOJO getPersonne(int cle) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 		
 }
 

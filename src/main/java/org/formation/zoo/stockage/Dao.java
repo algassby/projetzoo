@@ -19,5 +19,7 @@ public interface Dao<T> {
 	public void effacer(T obj);
 	public void effacer(int cle);
 	public void ajouter(T obj);
+	public int getNombreEnregistrement();
+	public T getPersonne(int cle);
 
 }

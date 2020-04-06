@@ -135,6 +135,18 @@ public class FichierAccess<T> implements Dao<T>{
 		
 	}
 
+	@Override
+	public int getNombreEnregistrement() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public T getPersonne(int cle) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 
