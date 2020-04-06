@@ -117,11 +117,9 @@ class DaoJDBCImplTest {
 			tmp.setNom(null);
 			tmp.setCle(15);
 			dao = new DaoJDBCImpl();
-			//dao.ajouter(tmp);
+			dao.ajouter(tmp);
 			assertNotNull(tmp);
-			//assertEquals("clarence",tmp.getNom());
-			assertNull(dao.getNom(63));
-			assertNotEquals("Marie",dao.getNom(63));
+			
 			
 		} catch (Exception e) {
 			fail("cela ne devrait pas arrivé");

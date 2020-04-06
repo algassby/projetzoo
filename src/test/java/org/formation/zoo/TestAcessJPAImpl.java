@@ -26,6 +26,7 @@ class TestAcessJPAImpl {
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		jpa = new  AccesJPAImpl();
+		
 	}
 
 	/**
