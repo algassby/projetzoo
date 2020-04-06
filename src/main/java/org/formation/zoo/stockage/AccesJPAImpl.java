@@ -129,9 +129,9 @@ public class AccesJPAImpl<T> implements Dao<T> {
 		//jp.modifier(tmp);
 		
 		jp.lireTous().forEach(System.out::println);
-		System.out.println(jp.getNombreEnregistrement());
-		
-		System.out.println(jp.getPersonne(9));
+//		System.out.println(jp.getNombreEnregistrement());
+//		
+//		System.out.println(jp.getPersonne(9));
 		
 	}
 
