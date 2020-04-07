@@ -75,7 +75,8 @@ public class DaoFactory {
  */
 	public void charger() {
 		try {
-			properties.load(new FileInputStream("classConfig.properties"));
+			//properties.load(new FileInputStream("classConfig.properties"));
+			properties.load(DaoFactory.class.getResourceAsStream("zoo.properties"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

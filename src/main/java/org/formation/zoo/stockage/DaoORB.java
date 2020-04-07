@@ -34,8 +34,8 @@ public  class DaoORB  {
 	}
 	private void charger() {
 		try {
-			properties.load(new FileInputStream("mysql.properties"));
-			
+			//properties.load(new FileInputStream("mysql.properties"));
+			properties.load(DaoFactory.class.getResourceAsStream("mysql.properties"));
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
