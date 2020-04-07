@@ -389,12 +389,9 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 //		gp.setId(11);
 //		cp.setGaz(gp);
 		
-		//daojdbc.ajouter(cp);
-		
-		//daojdbc.effacer(65);	
 		daojdbc.modifier(10, cp);
-		daojdbc.lireTous().forEach(System.out::println);
-//		System.out.println(daojdbc.getNom(1));
+		daojdbc.lireTous().forEach(item->System.out.println(item));
+
 		
 		
 	}
