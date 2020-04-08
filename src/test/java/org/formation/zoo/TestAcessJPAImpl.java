@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 import org.formation.zoo.service.CagePOJO;
-import org.formation.zoo.stockage.AccesJPAImpl;
+import org.formation.zoo.stockage.DaoJPAImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,19 +18,19 @@ import org.junit.jupiter.api.Test;
  */
 class TestAcessJPAImpl {
 
-	static AccesJPAImpl<CagePOJO> jpa;
+	static DaoJPAImpl<CagePOJO> jpa;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		jpa = new  AccesJPAImpl();
+		jpa = new  DaoJPAImpl();
 		
 	}
 
 	/**
-	 * Test method for {@link org.formation.zoo.stockage.AccesJPAImpl#lireTous()}.
+	 * Test method for {@link org.formation.zoo.stockage.DaoJPAImpl#lireTous()}.
 	 */
 	@Test
 	void testLireTous() {
@@ -43,7 +43,7 @@ class TestAcessJPAImpl {
 	}
 
 	/**
-	 * Test method for {@link org.formation.zoo.stockage.AccesJPAImpl#modifier(java.lang.Object)}.
+	 * Test method for {@link org.formation.zoo.stockage.DaoJPAImpl#modifier(java.lang.Object)}.
 	 */
 	@Test
 	void testModifierT() {
@@ -65,7 +65,7 @@ class TestAcessJPAImpl {
 	}
 
 	/**
-	 * Test method for {@link org.formation.zoo.stockage.AccesJPAImpl#effacer(int)}.
+	 * Test method for {@link org.formation.zoo.stockage.DaoJPAImpl#effacer(int)}.
 	 */
 	@Test
 	void testEffacerInt() {
@@ -85,7 +85,7 @@ class TestAcessJPAImpl {
 	}
 
 	/**
-	 * Test method for {@link org.formation.zoo.stockage.AccesJPAImpl#getPersonne(int)}.
+	 * Test method for {@link org.formation.zoo.stockage.DaoJPAImpl#getPersonne(int)}.
 	 */
 	@Test
 	void testGetPersonne() {

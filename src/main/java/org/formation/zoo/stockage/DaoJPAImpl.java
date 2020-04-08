@@ -20,11 +20,11 @@ import org.formation.zoo.service.GazellePOJO;
  * @author algas
  *
  */
-public class AccesJPAImpl<T> implements Dao<T> {
+public class DaoJPAImpl<T> implements Dao<T> {
 
 	private Logger logger;
 	private EntityManager em;
-	public AccesJPAImpl() {
+	public DaoJPAImpl() {
 		logger = Logger.getLogger("logger");
 		EntityManagerFactory emf = null;
 		emf = Persistence.createEntityManagerFactory("projetzoo");
@@ -99,7 +99,7 @@ public class AccesJPAImpl<T> implements Dao<T> {
 	}
 	
 	public static void main(String []args) {
-		AccesJPAImpl<CagePOJO> jp = null;
+		DaoJPAImpl<CagePOJO> jp = null;
 		CagePOJO tmp = null;
 		tmp = new CagePOJO();
 		GazellePOJO gp = new GazellePOJO();
@@ -121,7 +121,7 @@ public class AccesJPAImpl<T> implements Dao<T> {
 		gp.setIdAnimal(tmp.getCle());
 		
 		//tmp.setGaz(gp);
-		jp = new AccesJPAImpl<>();
+		jp = new DaoJPAImpl<>();
 		//jp.ajouter(tmp);
 		//jp.effacer(15);
 		//jp.effacer(tmp);
