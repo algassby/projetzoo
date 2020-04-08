@@ -53,8 +53,9 @@ public class AccesJPAImpl<T> implements Dao<T> {
 
 	@Override
 	public void modifier(int cle, T obj) {
-	
-	
+		em.getTransaction().begin();
+		em.merge(obj);
+		em.getTransaction().commit();
 		
 	}
 	@Override
@@ -67,9 +68,6 @@ public class AccesJPAImpl<T> implements Dao<T> {
 	@Override
 	public void effacer(T obj) {
 		
-		em.getTransaction().begin();
-		em.remove(obj);
-		em.getTransaction().commit();
 		
 	}
 
@@ -106,10 +104,10 @@ public class AccesJPAImpl<T> implements Dao<T> {
 		tmp = new CagePOJO();
 		GazellePOJO gp = new GazellePOJO();
 		//l'animal
-		tmp.setCle(15);
+		tmp.setCle(10);
 		tmp.setAge(10);
-		tmp.setCodeAnimal("Singe");
-		tmp.setNom("Lucie");
+		tmp.setCodeAnimal("Lion");
+		tmp.setNom("Nifra");
 		tmp.setPoids(80);
 		tmp.setX(500);
 		tmp.setY(500);
@@ -122,12 +120,12 @@ public class AccesJPAImpl<T> implements Dao<T> {
 		
 		gp.setIdAnimal(tmp.getCle());
 		
-		tmp.setGaz(gp);
+		//tmp.setGaz(gp);
 		jp = new AccesJPAImpl<>();
 		//jp.ajouter(tmp);
 		//jp.effacer(15);
 		//jp.effacer(tmp);
-		//jp.modifier(tmp);
+		jp.modifier(tmp.getCle(),tmp);
 		
 		jp.lireTous().forEach(System.out::println);
 //		System.out.println(jp.getNombreEnregistrement());
