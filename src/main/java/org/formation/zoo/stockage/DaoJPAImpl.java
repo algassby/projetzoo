@@ -4,6 +4,7 @@
 package org.formation.zoo.stockage;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
@@ -41,22 +42,17 @@ public class DaoJPAImpl<T> implements Dao<T> {
 		return em.createNamedQuery("findAll").getResultList();
 	}
 	
-	
-
 	@Override
 	public void ecrireTous(List<T> elt) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 
 	@Override
 	public void modifier(int cle, T obj) {
 		em.getTransaction().begin();
 		em.merge(obj);
 		em.getTransaction().commit();
-		
 	}
 	@Override
 	public void modifier(T obj) {
@@ -64,29 +60,60 @@ public class DaoJPAImpl<T> implements Dao<T> {
 		em.merge(obj);
 		em.getTransaction().commit();
 	}
-
+	
 	@Override
-	public void effacer(T obj) {
-		
-		
+	public void effacer(T objet) {
+		try {
+			if (!em.contains(objet)) {
+				objet = em.merge(objet);
+			}
+			em.getTransaction().begin();
+			em.remove(objet);
+			em.getTransaction().commit();
+			logger.log(Level.INFO, "Suppression reussi");
+		} catch (Exception e) {
+			logger.log(Level.INFO, "l'entité introuvable");
+		}
+
 	}
+	
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void effacer(int cle) {
 		T obj = null;
-		em.getTransaction().begin();
-		obj = (T) em.createNamedQuery("find").setParameter("idAnimal", cle).getSingleResult();
-		em.remove(obj);
-		em.getTransaction().commit();
+		try {
+			if(!em.contains(obj)) {
+				em.merge(obj);
+			}
+			em.getTransaction().begin();
+			obj = (T) em.createNamedQuery("find").setParameter("idAnimal", cle).getSingleResult();
+			em.remove(obj);
+			em.getTransaction().commit();
+			logger.log(Level.INFO, "Suppression reussi");
+		}catch (Exception e) {
+			logger.log(Level.INFO, "entité non rouvé");
+		}
+		
 		
 	}
 
 	@Override
 	public void ajouter(T obj) {
-		em.getTransaction().begin();
-		em.persist(obj);
-		em.getTransaction().commit();
+		try {
+			
+			if(em.contains(obj)) {
+				em.merge(obj);
+			}
+			em.refresh(obj);
+			em.getTransaction().begin();
+			em.persist(obj);
+			em.getTransaction().commit();
+			logger.log(Level.INFO,"a été ajouter avec succès");
+		} catch (Exception e) {
+			logger.log(Level.INFO, "entité existe deja");
+		}
+		
 		
 	}
 	
@@ -104,11 +131,11 @@ public class DaoJPAImpl<T> implements Dao<T> {
 		tmp = new CagePOJO();
 		GazellePOJO gp = new GazellePOJO();
 		//l'animal
-		tmp.setCle(10);
+		tmp.setCle(15);
 		tmp.setAge(10);
-		tmp.setCodeAnimal("Lion");
-		tmp.setNom("Nifra");
-		tmp.setPoids(80);
+		tmp.setCodeAnimal("Gazelle");
+		tmp.setNom("Marie");
+		tmp.setPoids(70);
 		tmp.setX(500);
 		tmp.setY(500);
 
@@ -120,12 +147,13 @@ public class DaoJPAImpl<T> implements Dao<T> {
 		
 		gp.setIdAnimal(tmp.getCle());
 		
-		//tmp.setGaz(gp);
+		tmp.setGaz(gp);
 		jp = new DaoJPAImpl<>();
-		//jp.ajouter(tmp);
-		//jp.effacer(15);
+		jp.ajouter(tmp);
+		jp.effacer(tmp);
 		//jp.effacer(tmp);
-		jp.modifier(tmp.getCle(),tmp);
+		jp.modifier(125,tmp);
+		jp.effacer(80);
 		
 		jp.lireTous().forEach(System.out::println);
 //		System.out.println(jp.getNombreEnregistrement());

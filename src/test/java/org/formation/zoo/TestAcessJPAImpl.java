@@ -41,6 +41,24 @@ class TestAcessJPAImpl {
 		}
 		
 	}
+	
+
+	@Test
+	void testAjouter() {
+		
+		CagePOJO tmp = null;
+		tmp = new CagePOJO();
+		tmp.setCle(80);
+		tmp.setAge(12);
+		tmp.setCodeAnimal("Lion");
+		tmp.setPoids(8);
+		tmp.setX(222);
+		tmp.setY(201);
+		tmp.setNom("LILI");
+		jpa.ajouter(tmp);
+		assertTrue(jpa.lireTous().contains(jpa.lireTous().get(9)));
+		jpa.effacer(80);
+	}
 
 	/**
 	 * Test method for {@link org.formation.zoo.stockage.DaoJPAImpl#modifier(java.lang.Object)}.
@@ -83,6 +101,22 @@ class TestAcessJPAImpl {
 		}
 		
 	}
+	/**
+	 * test de la methode efface T{@link org.formation.zoo.stockage.DaoJPAImpl#effacer(T)}
+	 */
+	
+	@Test
+	void testEffacerT() {   
+		 DaoJPAImpl<CagePOJO> jpa = null;
+		 jpa = new DaoJPAImpl<CagePOJO>();
+		 CagePOJO tmp = null;
+	     List<CagePOJO>res = jpa.lireTous();
+	     tmp = res.get(9);
+		 assertNotNull(tmp.getCodeAnimal());
+		 tmp.setCle(11);
+	     jpa.effacer(tmp);
+	     assertTrue(res.contains(tmp));
+	}
 
 	/**
 	 * Test method for {@link org.formation.zoo.stockage.DaoJPAImpl#getPersonne(int)}.
@@ -106,3 +140,6 @@ class TestAcessJPAImpl {
 	}
 
 }
+
+
+
