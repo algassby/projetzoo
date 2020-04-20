@@ -24,7 +24,6 @@ public class DaoFactory {
 	/**
 	 * initialise les attributs Dao,properties
 	 */
-
 	private DaoFactory() {
 		properties = new Properties();
 		charger();

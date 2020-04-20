@@ -9,6 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Bienvenue DANS le ZOO</title>
 <link rel="stylesheet" type="text/css" href="style.css"></link>
+<!-- <link rel="stylesheet" type="text/css" href="bootstrap.min.css"></link> -->
+
 </head>
 <body>
 <header>
@@ -24,7 +26,7 @@
 	<li class="m"><a href="#">Supprimer un animal</a></li>
 </ul>
 </nav>
-<article>
+<article class="">
 <%
  List<CagePOJO> zanimaux = null;
  zanimaux = Manager.getInstance().getAnimaux();
@@ -34,22 +36,21 @@
 <img  alt="mon zoo" src="images/plan.gif">
 
 <%
-for(int i = 0;i<zanimaux.size();i++){
-	texte = String.join(" ","<div id=\"animal",Integer.toString(i),"\"style=\"position:absolute","top:",Integer.toString(zanimaux.get(i).getX()),
-	"px;left:",Integer.toString(zanimaux.get(i).getY()),"px",">" );
+for(int i = 0; i < zanimaux.size(); i++){
+	texte = String.join("","<div id=\"animal", Integer.toString(i),"\" style=\"position:absolute;top:",
+	Integer.toString(zanimaux.get(i).getY()), "px;left:", Integer.toString(zanimaux.get(i).getX()),"px\">");
 	out.print(texte);
-	texte = String.join(" ","<img alt=\"\" src=\"",zanimaux.get(i).getImage(),"\"","/>");
+	texte = String.join("","<img alt=\"\" src=\"",zanimaux.get(i).getImage(),"\" class=\"animal\"/>");
 	out.print(texte);
-	texte = String.join(" ", "<div class=\"afficheAnimal\">",zanimaux.get(i).getPancarte(),"</div>");
+	texte = String.join("","<div class=\"afficheAnimal\" >",zanimaux.get(i).getPancarte(),"</div></div>");
 	out.print(texte);
 }
-
 %>
-<div id="animal2" style="position:absolute;top:240px;left:200px">
+<!-- <div id="animal2" style="position:absolute;top:240px;left:200px">
 <img alt="" src="images/gazelle.gif" class="animal"/>
 
 <div class="afficheAnimal" >GagaZeleZele 3 ans 48.3 kg</div>
-</div>
+</div> -->
 <br>
 
 </article>
