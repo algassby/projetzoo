@@ -1,3 +1,5 @@
+<%@page import="java.util.Vector"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="org.formation.zoo.controleur.Manager"%>
 <%@page import="org.formation.zoo.controleur.InitServlet" %>
 <%@page import="org.formation.zoo.service.CagePOJO"%>
@@ -29,15 +31,19 @@
 </nav>
 <article class="">
 <%
+
  List<CagePOJO> zanimaux = null;
- zanimaux = Manager.getInstance().getAnimaux();
+	zanimaux = new Vector<>();
+ 	zanimaux =  (List<CagePOJO>) request.getAttribute("ListAnimal");
+ 	//CagePOJO tmp = (CagePOJO) zanimaux.get(0);
+
  String texte = null;
 
 %>
 <img  alt="mon zoo" src="images/plan.gif">
 
 <%
-/* for(int i = 0; i < zanimaux.size(); i++){
+  for(int i = 0; i < zanimaux.size(); i++){
 	texte = String.join("","<div id=\"animal", Integer.toString(i),"\" style=\"position:absolute;top:",
 	Integer.toString(zanimaux.get(i).getY()), "px;left:", Integer.toString(zanimaux.get(i).getX()),"px\">");
 	out.print(texte);
@@ -45,18 +51,12 @@
 	out.print(texte);
 	texte = String.join("","<div class=\"afficheAnimal\" >",zanimaux.get(i).getPancarte(),"</div></div>");
 	out.print(texte);
-} */
- 
+}
+  
 
 %>
-<div class="idAnimal" style="postion:absolute;top: <% request.getAttribute("X") ;%>; left:<% request.getAttribute("Y"); %>>">
-	<img alt="" src="<% request.getAttribute("IMAGE"); %>">
-	<div class="afficheAnimal">
-		<%out.print(request.getAttribute("ListAnimal"));%>
-		
-	</div>
-	
-</div>
+<%-- <% out.print(request.getAttribute("ListAnimal"));%> --%>
+
 
 
 

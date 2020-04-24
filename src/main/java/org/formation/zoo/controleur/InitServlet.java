@@ -11,8 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.formation.zoo.modele.metier.Animal;
 import org.formation.zoo.service.CagePOJO;
 
 /**
@@ -35,42 +33,10 @@ public class InitServlet extends HttpServlet {
 	}
 	public List<CagePOJO> getAnimaux()
 	{
-		List<CagePOJO> liste = null;
-		liste = Manager.getInstance().getAnimaux();
-		for(int i = 0; i < liste.size();i++) {
-			liste.get(i).getImage();
-			liste.get(i).getPancarte();
-		}
-		return liste;
-	}
-	public String getImage() {
-		String image = null;
-		List<CagePOJO> liste = null;
-		liste = Manager.getInstance().getAnimaux();
-		for(int i = 0; i < liste.size();i++) {
-		 image = 	liste.get(i).getImage();
-		}
-		return image;
+		return  Manager.getInstance().getAnimaux();
 		
 	}
-	public int getX() {
-		int x = 0;
-		List<CagePOJO> liste = null;
-		liste = Manager.getInstance().getAnimaux();
-		for(int i = 0; i < liste.size();i++) {
-			x = liste.get(i).getX();
-		}
-		return x;
-	}
-	public int getY() {
-		int y = 0;
-		List<CagePOJO> liste = null;
-		liste = Manager.getInstance().getAnimaux();
-		for(int i = 0; i < liste.size();i++) {
-			y = liste.get(i).getY();
-		}
-		return y;
-	}
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -78,10 +44,8 @@ public class InitServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		req.setAttribute("ListAnimal",this.getAnimaux());
-		req.setAttribute("X", this.getX());
-		req.setAttribute("Y", this.getY());
-		req.setAttribute("IMGAE", this.getImage());
 		req.getServletContext().getRequestDispatcher("/principal.jsp").forward(req, resp);
 		
 	}

@@ -51,6 +51,10 @@ public final class Manager {
 		return ret;
 	}
 	
+	public void ajouter() {
+		
+	}
+	
 	/**
 	 * Méthode privé qui charge le modèle.
 	 * Pour l'instant elle instancie les animaux
