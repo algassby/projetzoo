@@ -1,3 +1,4 @@
+<%@page import="org.formation.zoo.controleur.MangerServlet"%>
 <%@page import="java.util.Vector"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="org.formation.zoo.controleur.Manager"%>
@@ -23,7 +24,11 @@
 <form name="fzoo" action="servlet.html" method="GET">
 <nav>
 <ul class="m">
-	<li class="m"><a href="#">TOUT le monde mange (defaut)</a></li>
+<% 
+	MangerServlet mangerServlet = null;
+	mangerServlet = new MangerServlet();
+%>
+	<li class="m"><a href="<% mangerServlet.nourrir(); %>">TOUT le monde mange (defaut)</a></li>
 	<li class="m"><a href="#" onClick="fzoo.submit();">FAIRE manger les animaux selectionnes</a></li>
 	<li class="m"><a href="#">Ajouter un animal</a></li>
 	<li class="m"><a href="#">Supprimer un animal</a></li>
@@ -32,14 +37,14 @@
 <article class="">
 <%
 
- List<CagePOJO> zanimaux = null;
+	List<CagePOJO> zanimaux = null;
 	zanimaux = new Vector<>();
- 	zanimaux =  (List<CagePOJO>) request.getAttribute("ListAnimal");
- 	//CagePOJO tmp = (CagePOJO) zanimaux.get(0);
-
- String texte = null;
+	zanimaux =  (Vector<CagePOJO>) request.getAttribute("ListAnimal");
+	//CagePOJO tmp = (CagePOJO) zanimaux.get(0);
+	String texte = null;
 
 %>
+
 <img  alt="mon zoo" src="images/plan.gif">
 
 <%
@@ -53,18 +58,8 @@
 	out.print(texte);
 }
   
-
 %>
-<%-- <% out.print(request.getAttribute("ListAnimal"));%> --%>
 
-
-
-
-<!-- <div id="animal2" style="position:absolute;top:240px;left:200px">
-<img alt="" src="images/gazelle.gif" class="animal"/>
-
-<div class="afficheAnimal" >GagaZeleZele 3 ans 48.3 kg</div>
-</div> -->
 <br>
 </article>
 <footer>
