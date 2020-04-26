@@ -24,21 +24,18 @@
 <form name="fzoo" action="servlet.html" method="GET">
 <nav>
 <ul class="m">
-<% 
-	MangerServlet mangerServlet = null;
-	mangerServlet = new MangerServlet();
-%>
-	<li class="m"><a href="<% mangerServlet.nourrir(); %>">TOUT le monde mange (defaut)</a></li>
+
+	<li class="m"><a href="<%=request.getContextPath()+"/manger"%>">TOUT le monde mange (defaut)</a></li>
 	<li class="m"><a href="#" onClick="fzoo.submit();">FAIRE manger les animaux selectionnes</a></li>
 	<li class="m"><a href="#">Ajouter un animal</a></li>
 	<li class="m"><a href="#">Supprimer un animal</a></li>
 </ul>
 </nav>
 <article class="">
-<%
+<%	
 
 	List<CagePOJO> zanimaux = null;
-	zanimaux = new Vector<>();
+	//zanimaux = new Vector<>();
 	zanimaux =  (Vector<CagePOJO>) request.getAttribute("ListAnimal");
 	//CagePOJO tmp = (CagePOJO) zanimaux.get(0);
 	String texte = null;

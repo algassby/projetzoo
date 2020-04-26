@@ -21,12 +21,7 @@
 </nav>
 <article>
 <img  alt="mon zoo" src="images/plan.gif">
-<div id="animal1" style="position:absolute;top:180px;left:367px">
-	<img alt="" src="images/lion.gif" class="animal"/>
 
-	<div class="afficheAnimal" >Clarence 4 ans 154.3 kg</div>
-	</div>
-</div>
 <div id="animal2" style="position:absolute;top:240px;left:200px">
 <img alt="" src="images/gazelle.gif" class="animal"/>
 

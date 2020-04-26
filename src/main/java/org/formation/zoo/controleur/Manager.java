@@ -6,6 +6,8 @@ package org.formation.zoo.controleur;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.formation.zoo.modele.technique.CageManager;
 import org.formation.zoo.service.CagePOJO;
@@ -20,6 +22,7 @@ public final class Manager {
 	
 	private List<CageManager> lesCages;
 	private Dao<CagePOJO> acces;
+	private Logger logger;
 
 	
 	private static   Manager instance = new Manager();
@@ -30,6 +33,7 @@ public final class Manager {
 		lesCages = null;
 		//acces = DaoFactory.getInstance().getDao();
 		acces = DaoFactory.getInstance().getClassDao();
+		logger = Logger.getLogger("Level");
 
 		init();
 	}
@@ -86,8 +90,8 @@ public final class Manager {
 	 */
 	public void nourrir ()
 	{
-		for (CageManager cagePOJO : lesCages) {
-			cagePOJO.nourrir();
+		for (CageManager cageManager : lesCages) {
+			cageManager.nourrir();
 			
 		}
 	}
@@ -127,10 +131,18 @@ public final class Manager {
 //						// TODO Auto-generated catch block
 //						e1.printStackTrace();
 //					}
-//					lesCages.get(mange).fermer();
+////					lesCages.get(mange).fermer();
 //				}
 //		}
 //		return s;
+//	}
+	
+//	public void devorer(int mangeur, int mange) {
+//		for (CageManager cageManager : lesCages) {
+//			logger.log(Level.INFO, cageManager.devorer(mangeur, mange) );
+//			
+//		}
+//		//lesCages.forEach(item->devorer(mangeur, mange)); 
 //	}
 	/**
 	 * la methode qui permet de fermer la cage

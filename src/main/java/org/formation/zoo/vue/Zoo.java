@@ -1,14 +1,8 @@
 package org.formation.zoo.vue;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Vector;
 
 import org.formation.zoo.controleur.Manager;
-import org.formation.zoo.modele.technique.BeurkException;
-import org.formation.zoo.modele.technique.CagePleineException;
-import org.formation.zoo.modele.technique.PorteException;
-import org.formation.zoo.stockage.FichierAccess;
 
 /**
  * Programme PRINCIPAL 
@@ -49,9 +43,9 @@ public final class Zoo {
 	 * @param mange indice de la cage de la proie
 	 * @return le texte sur ce qu'il s'est passé
 	 */
-//	public String devorer(int mangeur, int mange)
+//	public void devorer(int mangeur, int mange)
 //	{
-//		return Manager.getInstance().devorer(mangeur, mange);
+//		 Manager.getInstance().devorer(mangeur, mange);
 //	}
 	
 //	public void fermer() {
@@ -68,6 +62,7 @@ public final class Zoo {
 		z.afficher();
 		System.out.println("on tente de faire manger un animal par un autre");
 //		System.out.println(z.devorer(1,0));
+		//z.devorer(0, 1);
 		z.afficher();
 		System.out.println("on ferme le zoo");
 //		z.fermer();
