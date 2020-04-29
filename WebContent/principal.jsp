@@ -14,6 +14,7 @@
 <title>Bienvenue DANS le ZOO</title>
 <link rel="stylesheet" type="text/css" href="style.css"></link>
 <!-- <link rel="stylesheet" type="text/css" href="bootstrap.min.css"></link> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -21,7 +22,7 @@
 <img class="logoGauche" alt="" src="images/logo.png"/>
 <img class="logoDroit" alt="" src="images/logo.png"/><p>Le zoo en folie</p>
 </header>
-<form name="fzoo" action="servlet.html" method="GET">
+<form name="fzoo" action="<%=request.getContextPath()+"/init" %>"  method="GET">
 <nav>
 <ul class="m">
 
@@ -30,6 +31,7 @@
 	<li class="m"><a href="#">Ajouter un animal</a></li>
 	<li class="m"><a href="#">Supprimer un animal</a></li>
 </ul>
+
 </nav>
 <article class="">
 <%	
@@ -51,8 +53,12 @@
 	out.print(texte);
 	texte = String.join("","<img alt=\"\" src=\"",zanimaux.get(i).getImage(),"\" class=\"animal\"/>");
 	out.print(texte);
-	texte = String.join("","<div class=\"afficheAnimal\" >",zanimaux.get(i).getPancarte(),"</div></div>");
+	texte = String.join("","<div class=\"afficheAnimal\" >",zanimaux.get(i).getPancarte(),"</div><br><input type=\"radio\" id=\"mangeur\" name=\"radiobuttons\" value=\"mangeur\">",
+	"<label>Mangeur</label><br><input type=\"radio\" id=\"mange\" name=\"radiobutton\" value=\"mange\"><label>Mange</label></div>");
 	out.print(texte);
+	texte = "<input type=\"radio\"><label>Mangeur</label>";
+	out.print(texte);
+	texte = "<input type=\"radio\"><label>Mange</label>";
 }
   
 %>
@@ -63,5 +69,16 @@
 Etat en temps reel...
 </footer>
 </form>
+	<script type="text/javascript" src="code.js"></script>
+	<script>
+		function submit(){
+	 		$.get('${Context.request.getContextPath()}/devorer', function(data) {
+	       	$("#mangeur").attr("checked");
+	    });
+}
+   
+</script>
+
 </body>
+
 </html>

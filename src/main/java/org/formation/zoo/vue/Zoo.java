@@ -43,10 +43,10 @@ public final class Zoo {
 	 * @param mange indice de la cage de la proie
 	 * @return le texte sur ce qu'il s'est passé
 	 */
-//	public void devorer(int mangeur, int mange)
-//	{
-//		 Manager.getInstance().devorer(mangeur, mange);
-//	}
+	public void devorer(int mangeur, int mange)
+	{
+		 System.out.println(Manager.getInstance().devorer(mangeur, mange));
+	}
 	
 //	public void fermer() {
 //		Manager.getInstance().fermer();
@@ -62,7 +62,7 @@ public final class Zoo {
 		z.afficher();
 		System.out.println("on tente de faire manger un animal par un autre");
 //		System.out.println(z.devorer(1,0));
-		//z.devorer(0, 1);
+		z.devorer(0, 1);
 		z.afficher();
 		System.out.println("on ferme le zoo");
 //		z.fermer();

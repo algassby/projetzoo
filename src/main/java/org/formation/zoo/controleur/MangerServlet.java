@@ -40,8 +40,8 @@ public class MangerServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		resp.getWriter().print("<p>coucou on mange bien</p>");
-		req.getServletContext().getRequestDispatcher("/principal.jsp").forward(req, resp);
+		//resp.getWriter().print("<p>coucou on mange bien</p>");
+		req.getServletContext().getRequestDispatcher("/init").forward(req, resp);
 	}
 	
 	

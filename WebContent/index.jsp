@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="style.css"></link>
 </head>
 <body>
+
 <header>
 <img class="logoGauche" alt="" src="images/logo.png"/>
 <img class="logoDroit" alt="" src="images/logo.png"/><p>Le zoo en folie</p>

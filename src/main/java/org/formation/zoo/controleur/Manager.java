@@ -6,10 +6,14 @@ package org.formation.zoo.controleur;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.formation.zoo.modele.metier.Animal;
+import org.formation.zoo.modele.metier.Mangeable;
+import org.formation.zoo.modele.technique.BeurkException;
 import org.formation.zoo.modele.technique.CageManager;
+import org.formation.zoo.modele.technique.CagePleineException;
+import org.formation.zoo.modele.technique.PorteException;
 import org.formation.zoo.service.CagePOJO;
 import org.formation.zoo.stockage.Dao;
 import org.formation.zoo.stockage.DaoFactory;
@@ -102,40 +106,40 @@ public final class Manager {
 	 * @param mange indice de la cage de la proie
 	 * @return le texte sur ce qu'il s'est passé
 	 */
-//	public String devorer(int mangeur, int mange)
-//	{
-//		Mangeable laBeteConvoitee = null;
-//		String s = "INCOMPATIBLE";
-//		if (lesCages.get(mange).getOccupant() != null && lesCages.get(mangeur).getOccupant() != null && lesCages.get(mange).getOccupant() instanceof Mangeable)
-//			{
-//				lesCages.get(mange).ouvrir();
-//				try {
-//					laBeteConvoitee = (Mangeable)lesCages.get(mange).sortir();
-//				} catch (PorteException e2) {
-//					// TODO Auto-generated catch block
-//					e2.printStackTrace();
-//				}
-//				try
-//				{
-//					s = lesCages.get(mangeur).getOccupant().manger(laBeteConvoitee);
-//				}
-//				catch (BeurkException e)
-//				{
-//					s = e.getMessage();
-//					try {
-//						lesCages.get(mange).entrer((Animal)laBeteConvoitee);
-//					} catch (PorteException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					} catch (CagePleineException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					}
-////					lesCages.get(mange).fermer();
-//				}
-//		}
-//		return s;
-//	}
+	public String devorer(int mangeur, int mange)
+	{
+		Mangeable laBeteConvoitee = null;
+		String s = "INCOMPATIBLE";
+		if (lesCages.get(mange).getControleur().getOccupant() != null && lesCages.get(mangeur).getControleur().getOccupant() != null && lesCages.get(mange).getControleur().getOccupant() instanceof Mangeable)
+			{
+				lesCages.get(mange).getControleur().ouvrir();
+				try {
+					laBeteConvoitee = (Mangeable)lesCages.get(mange).getControleur().sortir();
+				} catch (PorteException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				try
+				{
+					s = lesCages.get(mangeur).getControleur().getOccupant().manger(laBeteConvoitee);
+				}
+				catch (BeurkException e)
+				{
+					s = e.getMessage();
+					try {
+						lesCages.get(mange).entrer((Animal)laBeteConvoitee);
+					} catch (PorteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (CagePleineException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+//					lesCages.get(mange).fermer();
+				}
+		}
+		return s;
+	}
 	
 //	public void devorer(int mangeur, int mange) {
 //		for (CageManager cageManager : lesCages) {

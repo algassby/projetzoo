@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.formation.zoo.modele.metier.Animal;
 import org.formation.zoo.modele.metier.Cage;
-import org.formation.zoo.modele.metier.Mangeable;
 import org.formation.zoo.service.CagePOJO;
 import org.formation.zoo.stockage.Dao;
 
@@ -121,9 +120,23 @@ public final  class CageManager {
 //		return s;
 		
 	//}
+	
+	
 	@Override
 	public String toString() {
 		return controleur.toString();
+	}
+	/**
+	 * @return the controleur
+	 */
+	public Cage getControleur() {
+		return controleur;
+	}
+	/**
+	 * @param controleur the controleur to set
+	 */
+	public void setControleur(Cage controleur) {
+		this.controleur = controleur;
 	}
 	
 	
