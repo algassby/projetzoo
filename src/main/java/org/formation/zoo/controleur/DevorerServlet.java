@@ -38,8 +38,12 @@ public class DevorerServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("mangeur", req.getAttribute("radiobuttons"));
-		req.setAttribute("mange", req.getAttribute("radiobutton"));
+		String valMangeur = req.getParameter("radiobuttons");
+		String valMange = req.getParameter("radiobutton");
+		
+		//req.setAttribute("val", Manager.getInstance().devorer((Integer)valMangeur,(Integer) valMange));
+		req.setAttribute("mangeur", valMangeur);
+		req.setAttribute("mange", valMange);
 		resp.getWriter().print("<p>servelet devorer</p>");
 		resp.getWriter().print(req.getAttribute("mangeur"));
 		resp.getWriter().print(req.getAttribute("mange"));

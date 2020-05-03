@@ -22,7 +22,7 @@
 <img class="logoGauche" alt="" src="images/logo.png"/>
 <img class="logoDroit" alt="" src="images/logo.png"/><p>Le zoo en folie</p>
 </header>
-<form name="fzoo" action="<%=request.getContextPath()+"/init" %>"  method="GET">
+<form name="fzoo" action="<%=request.getContextPath()+"/devorer" %>"  method="GET">
 <nav>
 <ul class="m">
 
@@ -70,14 +70,7 @@ Etat en temps reel...
 </footer>
 </form>
 	<script type="text/javascript" src="code.js"></script>
-	<script>
-		function submit(){
-	 		$.get('${Context.request.getContextPath()}/devorer', function(data) {
-	       	$("#mangeur").attr("checked");
-	    });
-}
-   
-</script>
+	
 
 </body>
 
