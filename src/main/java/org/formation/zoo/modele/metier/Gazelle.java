@@ -1,5 +1,8 @@
 package org.formation.zoo.modele.metier;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Classe représentant une gazelle. 
  * C'est une proie pour le lion, donc elle implémente l'interface Mangeable
@@ -12,16 +15,20 @@ public final class Gazelle extends Animal implements Mangeable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int lgCornes;
+	private Logger logger;
 		
 	public Gazelle()
 	{
 		this("GGGGG",1,30,10);
 		lgCornes = 20;
+		
 	}
 	public Gazelle(String n, int a, double p, int l) 
 	{
+		
 		super(n,a,p,150);
 		setLgCornes(l);
+		logger = Logger.getLogger("level");
 	}
 
 	public int getLgCornes() {
@@ -50,7 +57,9 @@ public final class Gazelle extends Animal implements Mangeable{
 	@Override
 	public void finalize()
 	{
-		System.out.println("Arghhhhhh!!!! je meurs!");
+		//System.out.println("Arghhhhhh!!!! je meurs!");
+		logger.log(Level.INFO, "Arghhhhhh!!!! je meurs!");
+		
 	}
 	
 	@Override
