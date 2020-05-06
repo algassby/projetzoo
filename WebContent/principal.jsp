@@ -14,7 +14,11 @@
 <title>Bienvenue DANS le ZOO</title>
 <link rel="stylesheet" type="text/css" href="style.css"></link>
 <!-- <link rel="stylesheet" type="text/css" href="bootstrap.min.css"></link> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+
+
 
 </head>
 <body>
@@ -22,18 +26,6 @@
 <img class="logoGauche" alt="" src="images/logo.png"/>
 <img class="logoDroit" alt="" src="images/logo.png"/><p>Le zoo en folie</p>
 </header>
-<form name="fzoo"action="<%=request.getContextPath()%>/devorer" method="GET">
-<nav>
-<ul class="m">
-<%-- <jsp:useBean id="DevorerServlet" class="org.formation.zoo.controleur.DevorerServlet"></jsp:useBean> --%>
-	<li class="m"><a href="<%=request.getContextPath()+"/manger"%>">TOUT le monde mange (defaut)</a></li>
-	<li class="m"><a href="#" Onclick="fzoo.submit()">FAIRE manger les animaux selectionnes</a></li>
-	<li class="m"><a href="#">Ajouter un animal</a></li>
-	<li class="m"><a href="#">Supprimer un animal</a></li>
-</ul>
-
-</nav>
-<article class="">
 <%	
 
 	List<CagePOJO> zanimaux = null;
@@ -43,6 +35,50 @@
 	String texte = null;
 
 %>
+<div id="modal">
+	<div id="dialog" title="Dialog box">
+		  <form style="text-align:center;" action="<%=request.getContextPath()%>/ajouter" method="GET">
+		  <h5>remplir ce formulaire pour ajouter un animal</h5>
+		  <label for="lname">sa clé</label><br>
+		  <input type="number" id="lname" name="cle" placeholder="cle"><br>
+		  <label for="fname"> Son code Animal</label><br>
+		  <!-- <select name="animal">
+		  <option  value="Gazelle">Gazelle</option>
+		   <option value ="Lion">Gazelle</option>
+		   <option value="Singe">Gazelle</option>
+		  </select> -->
+		  <input type="text" placeholder="CodeAnimal" name="codeAnimal"><br>
+		  <label for="lname">son abscisse</label><br>
+		  <input type="number" id="lname" name="x" value="<% %>" placeholder="X"><br>
+		  <label for="lname">son ordonnée</label><br>
+		  <input type="number" id="lname" name="y" placeholder="Y"><br>
+		  <label for="lname">son Nom</label><br>
+		  <input type="text" id="lname" name="nom" placeholder="nom"><br>
+		  <label for="lname">son poids</label><br>
+		  <input type="number" id="lname" name="poids" placeholder="poids"><br>
+		  <label for="lname">son age</label><br>
+		  <input type="number" id="lname" name="age" placeholder="age"><br>
+		  <label for="lname">longueur de cornes pour gazelle</label><br>
+		  <input type="number" id="lname" name="lgCorne" placeholder="longeur cornes"><br><br>
+		  <button type="submit">valider</button>
+		</form>
+	</div>
+</div>
+	
+<form name="fzoo"action="<%=request.getContextPath()%>/devorer" method="GET">
+<nav>
+<ul class="m">
+<%-- <jsp:useBean id="DevorerServlet" class="org.formation.zoo.controleur.DevorerServlet"></jsp:useBean> --%>
+	<li class="m"><a href="<%=request.getContextPath()+"/manger"%>">TOUT le monde mange (defaut)</a></li>
+	<li class="m"><a href="#" Onclick="fzoo.submit()">FAIRE manger les animaux selectionnes</a></li>
+	<li class="m"><a href="#" id = "bajouter">Ajouter un animal</a></li>
+	<li class="m"><a href="#">Supprimer un animal</a></li>
+</ul>
+
+</nav>
+<article class="">
+
+
 
 <img  alt="mon zoo" src="images/plan.gif">
 
@@ -69,7 +105,7 @@
 Etat en temps reel...
 </footer>
 </form>
-	<!-- <script type="text/javascript" src="code.js"></script> -->
+	<script type="text/javascript" src="code.js"></script>
 	
 
 </body>

@@ -207,5 +207,8 @@ public final class Manager {
 		}
 		return res;
 	}
+	public void ajouter(CagePOJO obj) {
+		acces.ajouter(obj);
+	}
 
 }
