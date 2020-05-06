@@ -5,7 +5,7 @@ $(document).ready(function(){
 //		  at: "right bottom",
 //		  of: "#modal"
 //		});
-	$("#dialog").css({"float": "right", "background-color":"grey", "width": "300%","height": "300%"});
+	$("#dialog").css({"float": "right", "background-color":"grey"});
 	
 		 $("#dialog").dialog({
 		     autoOpen: false,

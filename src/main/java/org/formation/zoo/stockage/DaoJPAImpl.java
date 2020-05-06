@@ -104,8 +104,9 @@ public class DaoJPAImpl<T> implements Dao<T> {
 			
 			if(em.contains(obj)) {
 				em.merge(obj);
+				em.refresh(obj);
 			}
-			em.refresh(obj);
+			
 			em.getTransaction().begin();
 			em.persist(obj);
 			em.getTransaction().commit();

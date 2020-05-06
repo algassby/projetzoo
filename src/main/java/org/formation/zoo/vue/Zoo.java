@@ -3,6 +3,8 @@ package org.formation.zoo.vue;
 import java.util.Arrays;
 
 import org.formation.zoo.controleur.Manager;
+import org.formation.zoo.modele.metier.Cage;
+import org.formation.zoo.service.CagePOJO;
 
 /**
  * Programme PRINCIPAL 
@@ -56,6 +58,16 @@ public final class Zoo {
 		
 		Zoo z = null;
 		z = new Zoo();
+		CagePOJO tmp = null;
+		tmp = new CagePOJO();
+		tmp.setCle(7);
+		tmp.setAge(12);
+		tmp.setCodeAnimal("Lion");
+		tmp.setNom("lil");
+		tmp.setPoids(98);
+		tmp.setX(700);
+		tmp.setY(310);
+		Manager.getInstance().ajouter(tmp);
 					
 		
 		z.afficher(); 
