@@ -131,28 +131,28 @@ public class DaoJPAImpl<T> implements Dao<T> {
 		tmp = new CagePOJO();
 		GazellePOJO gp = new GazellePOJO();
 		//l'animal
-		tmp.setCle(3);
-		tmp.setAge(4);
-		tmp.setCodeAnimal("Singe");
-		tmp.setNom("Chita");
+		tmp.setCle(5);
+		tmp.setAge(12);
+		tmp.setCodeAnimal("Gazelle");
+		tmp.setNom("GaGAG");
 		tmp.setPoids(98);
-		tmp.setX(400);
-		tmp.setY(400);
+		tmp.setX(700);
+		tmp.setY(250);
 
 		//la gazelle
-		gp.setId(20);
+		gp.setId(5);
 		
 		
-		gp.setLgCornes(12);
+		gp.setLgCornes(5);
 		
 		gp.setIdAnimal(tmp.getCle());
 		
-		//tmp.setGaz(gp);
+		tmp.setGaz(gp);
 		jp = new DaoJPAImpl<>();
-		jp.ajouter(tmp);
+		//jp.ajouter(tmp);
 		jp.effacer(tmp);
 		//jp.effacer(tmp);
-		jp.modifier(125,tmp);
+		jp.modifier(tmp);
 		jp.effacer(80);
 		
 		jp.lireTous().forEach(System.out::println);

@@ -49,6 +49,7 @@ public final class Lion extends Animal {
 		if (m != null)
 		{
 			setPoids(getPoids()+(m.prelever()));
+			
 		}
 		return "MIAM";
 	}

@@ -73,7 +73,7 @@ public class DaoJDBCImpl implements Dao<CagePOJO> {
 		ResultSet rs = null;
 		
 		String req = "SELECT * FROM animal as gauche left join gazelle "
-							+ "	as droite on gauche.idAnimal = droite.idAnimal;";
+							+ "	as droite on gauche.idAnimal = droite.idAnimal ORDER BY gauche.idAnimal;";
 		try (Statement st = connecteur.getConnection().createStatement()){
 			ret = new Vector<>();
 			rs = st.executeQuery(req);

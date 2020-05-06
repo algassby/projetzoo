@@ -6,6 +6,7 @@ package org.formation.zoo.controleur;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.formation.zoo.modele.metier.Animal;
@@ -26,18 +27,21 @@ public final class Manager {
 	
 	private List<CageManager> lesCages;
 	private Dao<CagePOJO> acces;
+	CagePOJO vue;
 	private Logger logger;
-
+	
 	
 	private static   Manager instance = new Manager();
 	/**
 	 * le constructeur doit etre privé
 	 */
 	private Manager() {
+		
 		lesCages = null;
 		//acces = DaoFactory.getInstance().getDao();
 		acces = DaoFactory.getInstance().getClassDao();
 		logger = Logger.getLogger("Level");
+		
 
 		init();
 	}
@@ -101,7 +105,7 @@ public final class Manager {
 	}
 	
 	/**
-	 * 
+	 * permet à un animal de devorer un autre
 	 * @param mangeur indice de l'animal mangeur (sa cage)
 	 * @param mange indice de la cage de la proie
 	 * @return le texte sur ce qu'il s'est passÃ©
@@ -116,41 +120,79 @@ public final class Manager {
 				try {
 					laBeteConvoitee = (Mangeable)lesCages.get(mange).getControleur().sortir();
 				} catch (PorteException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
+					
+					logger.log(Level.SEVERE, e2.getMessage());
+					
 				}
 				try
 				{
-					s = lesCages.get(mangeur).getControleur().getOccupant().manger(laBeteConvoitee);
+					s = lesCages.get(mangeur).faireManger(laBeteConvoitee);
+					lesCages.get(mange).refresh();
 				}
 				catch (BeurkException e)
 				{
-					s = e.getMessage();
+					logger.log(Level.SEVERE, e.getMessage());
+					
 					try {
 						lesCages.get(mange).entrer((Animal)laBeteConvoitee);
 					} catch (PorteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (CagePleineException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						
+						logger.log(Level.SEVERE, e1.getMessage());
+					} catch (CagePleineException e2) {
+						logger.log(Level.SEVERE, e2.getMessage());
+						
 					}
-//					lesCages.get(mange).fermer();
+
 				}
 		}
 		return s;
 	}
 	
-//	public void devorer(int mangeur, int mange) {
-//		for (CageManager cageManager : lesCages) {
-//			logger.log(Level.INFO, cageManager.devorer(mangeur, mange) );
-//			
+//	public String devore(int mangeur, int mange)
+//	{
+//		Mangeable laBeteConvoitee = null;
+//		String s = "INCOMPATIBLE";
+//		CageManager cpMangeur = null;
+//		CageManager cpMange = null;
+//		//int cle = 0;
+//		cpMange = lesCages.get(mange);
+//		cpMangeur = lesCages.get(mangeur);
+//		if (cpMange.getControleur().getOccupant() != null && cpMangeur.getControleur().getOccupant()  != null && cpMange.getControleur().getOccupant()  instanceof Mangeable)
+//			{
+//			cpMange.getControleur().ouvrir(); 
+//				try {
+//					
+//					laBeteConvoitee = (Mangeable)cpMange.getControleur().sortir();
+//				} catch (PorteException e2) {
+//					
+//					e2.printStackTrace();
+//				}
+//				try
+//				{	
+//					s = cpMangeur.faireManger(laBeteConvoitee);
+//					
+//					cpMange.refresh();
+//					
+//				}
+//				catch (BeurkException e)
+//				{
+//					s = e.getMessage();
+//					try {
+//						cpMange.entrer((Animal)laBeteConvoitee);
+//					} catch (PorteException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					} catch (CagePleineException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
+//					//cpMange.fermer();
+//				}
 //		}
-//		//lesCages.forEach(item->devorer(mangeur, mange)); 
+//		return s;
 //	}
-	/**
-	 * la methode qui permet de fermer la cage
-	 */
+
+	
 //	public void fermer() {
 //		acces.ecrireTous(lesCages);
 //	}

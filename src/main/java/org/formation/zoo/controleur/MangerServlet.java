@@ -28,10 +28,13 @@ public class MangerServlet extends HttpServlet {
 	 */
 	public MangerServlet() {
 		super();
-		Manager.getInstance().nourrir();
+		this.nourrir();
 	}
 
 
+	public void nourrir() {
+		Manager.getInstance().nourrir();
+	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);

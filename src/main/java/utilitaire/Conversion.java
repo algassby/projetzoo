@@ -4,12 +4,16 @@
 package utilitaire;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.formation.zoo.modele.metier.Animal;
 import org.formation.zoo.modele.metier.Cage;
+import org.formation.zoo.modele.metier.Gazelle;
 import org.formation.zoo.modele.technique.CagePleineException;
 import org.formation.zoo.modele.technique.PorteException;
 import org.formation.zoo.service.CagePOJO;
+import org.formation.zoo.service.GazellePOJO;
 
 /**
  * classe boite à outils
@@ -18,6 +22,7 @@ import org.formation.zoo.service.CagePOJO;
  */
 public final  class Conversion {
 	public static final String MODELE = "org.formation.zoo.modele.metier.";
+	private static Logger logger;
 
 	/**
 	 * 
@@ -31,6 +36,7 @@ public final  class Conversion {
 	 * @return
 	 */
 	public static Cage pojoToCage(CagePOJO cp) {
+		logger = Logger.getLogger("Level");
 		Cage ret =  null;
 		Animal bete = null;
 		Class<?> laClasseDeLaBete = null;
@@ -53,11 +59,7 @@ public final  class Conversion {
 				lesValeurs = new Object[3];
 				
 			}
-//			lesTypes = new Class<?>[3];
-//			lesValeurs = new Object[3];
-//			/**
-//			 * les types
-//			 */
+
 			lesTypes[0] = String.class;
 			lesTypes[1] = int.class;
 			lesTypes[2] = double.class;
@@ -68,47 +70,71 @@ public final  class Conversion {
 			lesValeurs[1] = cp.getAge();
 			lesValeurs[2] = cp.getPoids();
 			try {
-//				laClasseDeLaBete = Class.forName(MODELE+cp.getCodeAnimal());
+
 				laClasseDeLaBete = Class.forName(String.join("", MODELE, cp.getCodeAnimal()));
 				
 				construct = laClasseDeLaBete.getConstructor(lesTypes);
-//				construct =  laClasseDeLaBete.getDeclaredConstructor(lesTypes);
+
 				bete = (Animal) construct.newInstance(lesValeurs);
 				ret.ouvrir();
 				ret.entrer(bete);
 				ret.fermer();
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				
+				logger.log(Level.SEVERE, e.getMessage());
 			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.SEVERE, e.getMessage());
 			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.SEVERE, e.getMessage());
 			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.SEVERE, e.getMessage());
 			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.SEVERE, e.getMessage());
 			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.SEVERE, e.getMessage());
 			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.SEVERE, e.getMessage());
 			} catch (PorteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.SEVERE, e.getMessage());
+				
 			} catch (CagePleineException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.SEVERE, e.getMessage());
 			}
 			
 		}
 		return ret;
 		
+	}
+	/**
+	 * covertit une Cage en POJO
+	 * @param c 
+	 * @param cle
+	 * @return Un objet cagePOJO
+	 */
+	public static CagePOJO cageToPojo(Cage c, int cle) {
+		CagePOJO tmp = null;
+
+			tmp = new CagePOJO();
+			tmp.setCle(cle);
+			tmp.setX(c.getX());
+			tmp.setY(c.getY());
+			// si la cage a un occcupants
+			if(c.getOccupant() != null) {
+				tmp.setCodeAnimal(c.getOccupant().getClass().getSimpleName());
+				tmp.setNom(c.getOccupant().getNom());
+				tmp.setAge(c.getOccupant().getAge());
+				tmp.setPoids(c.getOccupant().getPoids());
+			}
+			
+			// si la cage a une gazelle
+			if (c.getOccupant() instanceof Gazelle){
+				Gazelle g = (Gazelle) c.getOccupant();
+				GazellePOJO gaz = new GazellePOJO();
+				tmp.setGaz(gaz);
+			}
+			
+		return tmp;
 	}
 
 }

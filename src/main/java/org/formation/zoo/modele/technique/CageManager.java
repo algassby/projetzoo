@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.formation.zoo.modele.metier.Animal;
 import org.formation.zoo.modele.metier.Cage;
+import org.formation.zoo.modele.metier.Mangeable;
 import org.formation.zoo.service.CagePOJO;
 import org.formation.zoo.stockage.Dao;
 
@@ -25,12 +26,38 @@ public final  class CageManager {
 	private List<Cage> lesCages;
 	private CagePOJO vue;
 	private Dao<CagePOJO> modele;
+	/**
+	 * 
+	 * @param pojo, cagePOJO 
+	 * @param dao, le Dao
+	 */
 	
 	public CageManager(CagePOJO pojo, Dao<CagePOJO> dao) {
 		lesCages = new ArrayList<>();
 		modele  =  dao;
 		vue = pojo;
 		controleur = Conversion.pojoToCage(pojo);
+	}
+	/**
+	 * 
+	 * @param m, interface mangeable
+	 * @return
+	 * @throws BeurkException
+	 */
+	public String faireManger(Mangeable mangeable) throws BeurkException {
+		controleur = Conversion.pojoToCage(vue) ;
+		String s = null;
+			s = controleur.getOccupant().manger(mangeable);
+			vue = Conversion.cageToPojo(controleur, vue.getCle());
+			modele.modifier(vue.getCle(), vue);
+		
+		return s;
+	}
+	/**
+	 * mise à jours de la vue
+	 */
+	public void refresh() {
+		modele.modifier(vue.getCle(), this.getVue());
 	}
 	/**
 	 * @return the vue
@@ -61,12 +88,19 @@ public final  class CageManager {
 		
 				
 	}
+	/**
+	 * faire entrer un a animal
+	 * @param a
+	 * @throws PorteException, si la porte est fermée 
+	 * @throws CagePleineException, si la cage est pleine
+	 */
 	public void entrer(Animal a) throws PorteException, CagePleineException{
 	
 		controleur.ouvrir();
 		controleur.entrer(a);
 		//mettre à jours le pojo
 		//modifier le pojo
+		this.refresh();
 
 	}
 	/**
@@ -80,48 +114,8 @@ public final  class CageManager {
 		}
 		
 	}
-	/**
-	 * 
-	 * @param mangeur indice de l'animal mangeur (sa cage)
-	 * @param mange indice de la cage de la proie
-	 * @return le texte sur ce qu'il s'est passé
-	 */
-//	public String devorer(int mangeur, int mange) {
-//		Mangeable laBeteConvoitee = null;
-//		String s = "INCOMPATIBLE";
-//		if (lesCages.get(mange).getOccupant() != null && lesCages.get(mangeur).getOccupant() != null && lesCages.get(mange).getOccupant() instanceof Mangeable)
-//			{
-//				lesCages.get(mange).ouvrir();
-//				try {
-//					laBeteConvoitee = (Mangeable)lesCages.get(mange).sortir();
-//				} catch (PorteException e2) {
-//					// TODO Auto-generated catch block
-//					e2.printStackTrace();
-//				}
-//				try
-//				{
-//					s = lesCages.get(mangeur).getOccupant().manger(laBeteConvoitee);
-//				}
-//				catch (BeurkException e)
-//				{
-//					s = e.getMessage();
-//					try {
-//						lesCages.get(mange).entrer((Animal)laBeteConvoitee);
-//					} catch (PorteException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					} catch (CagePleineException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					}
-////					lesCages.get(mange).fermer();
-//				}
-//		}
-//		return s;
-		
-	//}
 	
-	
+
 	@Override
 	public String toString() {
 		return controleur.toString();

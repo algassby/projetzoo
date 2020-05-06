@@ -22,12 +22,12 @@
 <img class="logoGauche" alt="" src="images/logo.png"/>
 <img class="logoDroit" alt="" src="images/logo.png"/><p>Le zoo en folie</p>
 </header>
-<form name="fzoo" action="<%=request.getContextPath()+"/init" %>"  method="GET">
+<form name="fzoo"action="<%=request.getContextPath()%>/devorer" method="GET">
 <nav>
 <ul class="m">
-
+<%-- <jsp:useBean id="DevorerServlet" class="org.formation.zoo.controleur.DevorerServlet"></jsp:useBean> --%>
 	<li class="m"><a href="<%=request.getContextPath()+"/manger"%>">TOUT le monde mange (defaut)</a></li>
-	<li class="m"><a href="#" onClick="fzoo.submit();" type="submit">FAIRE manger les animaux selectionnes</a></li>
+	<li class="m"><a href="#" Onclick="fzoo.submit()">FAIRE manger les animaux selectionnes</a></li>
 	<li class="m"><a href="#">Ajouter un animal</a></li>
 	<li class="m"><a href="#">Supprimer un animal</a></li>
 </ul>
@@ -53,8 +53,8 @@
 	out.print(texte);
 	texte = String.join("","<img alt=\"\" src=\"",zanimaux.get(i).getImage(),"\" class=\"animal\"/>");
 	out.print(texte);
-	texte = String.join("","<div class=\"afficheAnimal\" >",zanimaux.get(i).getPancarte(),"</div><br><input type=\"radio\" id=\"mangeur\" name=\"mangeur\" value=",Integer.toString(zanimaux.get(i).getCle()),">",
-	"<label>Mangeur</label><br><input type=\"radio\" id=\"mange\" name=\"mange\" value=", Integer.toString(zanimaux.get(i).getCle()), "><label>Mange</label></div>");
+	texte = String.join("","<div class=\"afficheAnimal\" >",zanimaux.get(i).getPancarte(),"</div><br><input type=\"radio\" id=\"mangeur\" name=\"mangeur\" value=",Integer.toString(zanimaux.get(i).getCle()-1),">",
+	"<label>Mangeur</label><br><input type=\"radio\" id=\"mange\" name=\"mange\" value=", Integer.toString(zanimaux.get(i).getCle()-1), "><label>Mange</label></div>");
 	out.print(texte);
 	
 }
@@ -65,11 +65,11 @@
 </article>
 
 <footer>
-<% out.print(request.getAttribute("devore")); %>
+ <%-- <% out.print(request.getAttribute("devore")); %> --%>
 Etat en temps reel...
 </footer>
 </form>
-	<script type="text/javascript" src="code.js"></script>
+	<!-- <script type="text/javascript" src="code.js"></script> -->
 	
 
 </body>

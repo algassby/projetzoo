@@ -52,20 +52,25 @@ public final class Gazelle extends Animal implements Mangeable{
 	public void dormir()
 	{
 		setPoids(getPoids()-0.4);
-				
 	}
 	@Override
 	public void finalize()
 	{
-		//System.out.println("Arghhhhhh!!!! je meurs!");
+		
 		logger.log(Level.INFO, "Arghhhhhh!!!! je meurs!");
 		
 	}
-	
+	/**
+	 * renvoie une chaine de caractere de l'objet
+	 */
 	@Override
 	public String toString() {
 		return super.toString() +  ", ses cornes mesurent " + lgCornes + " cm";
 	}
+	/**
+	 * preleve le tiers du poid de la gazelle {@link Mangeable}	
+	 */
+	
 	@Override
 	public double prelever() {
 		return getPoids()/3;

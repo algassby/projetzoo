@@ -27,7 +27,7 @@ public final class Zoo {
 	
 	public void afficher()
 	{
-		//Manager.getInstance().afficher();
+	
 		Arrays.asList(Manager.getInstance().afficher()).stream().forEach(System.out::println);
 	}
 	/**
@@ -53,16 +53,18 @@ public final class Zoo {
 //	}
 	
 	public static void main(String[] args) {
+		
 		Zoo z = null;
 		z = new Zoo();
 					
+		
 		z.afficher(); 
 		System.out.println("on fait manger tous les animaux");
 		z.nourrir();
 		z.afficher();
 		System.out.println("on tente de faire manger un animal par un autre");
 //		System.out.println(z.devorer(1,0));
-		z.devorer(0, 1);
+		z.devorer(0,1 );
 		z.afficher();
 		System.out.println("on ferme le zoo");
 //		z.fermer();
