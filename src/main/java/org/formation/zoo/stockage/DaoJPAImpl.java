@@ -82,20 +82,12 @@ public class DaoJPAImpl<T> implements Dao<T> {
 	@Override
 	public void effacer(int cle) {
 		T obj = null;
-		try {
-			if(!em.contains(obj)) {
-				em.merge(obj);
-			}
-			em.getTransaction().begin();
+		
 			obj = (T) em.createNamedQuery("find").setParameter("idAnimal", cle).getSingleResult();
-			em.remove(obj);
-			em.getTransaction().commit();
+			this.effacer(obj);
 			logger.log(Level.INFO, "Suppression reussi");
-		}catch (Exception e) {
-			logger.log(Level.INFO, "entité non rouvé");
-		}
-		
-		
+
+
 	}
 
 	@Override

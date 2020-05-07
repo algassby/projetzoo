@@ -35,6 +35,7 @@
 	String texte = null;
 
 %>
+<%--ajouter un animal --%>
 <div id="modal">
 	<div id="dialog" title="Dialog box">
 		  <form style="text-align:center;" action="<%=request.getContextPath()%>/ajouter" method="GET">
@@ -42,11 +43,6 @@
 		  <label for="lname">sa clé</label><br>
 		  <input type="number" id="lname" name="cle" placeholder="cle"><br>
 		  <label for="fname"> Son code Animal</label><br>
-		  <!-- <select name="animal">
-		  <option  value="Gazelle">Gazelle</option>
-		   <option value ="Lion">Gazelle</option>
-		   <option value="Singe">Gazelle</option>
-		  </select> -->
 		  <input type="text" placeholder="CodeAnimal" name="codeAnimal"><br>
 		  <label for="lname">son abscisse</label><br>
 		  <input type="number" id="lname" name="x" value="<% %>" placeholder="X"><br>
@@ -64,6 +60,8 @@
 		</form>
 	</div>
 </div>
+<%--supprimer un animal --%>
+
 	
 <form name="fzoo"action="<%=request.getContextPath()%>/devorer" method="GET">
 <nav>
@@ -72,7 +70,7 @@
 	<li class="m"><a href="<%=request.getContextPath()+"/manger"%>">TOUT le monde mange (defaut)</a></li>
 	<li class="m"><a href="#" Onclick="fzoo.submit()">FAIRE manger les animaux selectionnes</a></li>
 	<li class="m"><a href="#" id = "bajouter">Ajouter un animal</a></li>
-	<li class="m"><a href="#">Supprimer un animal</a></li>
+	<li class="m"><a href="supprimer.jsp" id="bsupprimer">Supprimer un animal</a></li>
 </ul>
 
 </nav>

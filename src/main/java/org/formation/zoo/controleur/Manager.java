@@ -38,19 +38,15 @@ public final class Manager {
 	private Manager() {
 		
 		lesCages = null;
-		//acces = DaoFactory.getInstance().getDao();
 		acces = DaoFactory.getInstance().getClassDao();
 		logger = Logger.getLogger("Level");
-		
-
 		init();
 	}
 	/**
 	 * @return instance, l'instance du singleton
 	 */
 	public static Manager getInstance() {
-		
-		return instance;
+			return instance;
 	}
 	
 	public List<CagePOJO> getAnimaux(){
@@ -207,8 +203,16 @@ public final class Manager {
 		}
 		return res;
 	}
+	/**
+	 * permet d'ajouter un animal dans liste
+	 * @param obj, l'animal à ajouter
+	 */
 	public void ajouter(CagePOJO obj) {
 		acces.ajouter(obj);
 	}
+	public void supprimer(int cle) {
+		acces.effacer(cle);
+	}
+	
 
 }

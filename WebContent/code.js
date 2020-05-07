@@ -1,10 +1,6 @@
  
 $(document).ready(function(){
-//	$( "#dialog" ).position({
-//		  my: "right center",
-//		  at: "right bottom",
-//		  of: "#modal"
-//		});
+
 	$("#dialog").css({"float": "right", "background-color":"grey"});
 	
 		 $("#dialog").dialog({
@@ -17,11 +13,9 @@ $(document).ready(function(){
 		      $("#dialog").dialog("open");
 		      
 		  });
-
 		  
 	
 });
-
 
 
 function check() {
