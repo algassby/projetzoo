@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.formation.zoo.service.CagePOJO;
+import org.formation.zoo.service.GazellePOJO;
 
 /**
  * Servlet implementation class AjouterServlet
@@ -38,6 +39,9 @@ public class AjouterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CagePOJO tmp = null;
+		GazellePOJO gaz = null;
+		gaz = new GazellePOJO();
+		
 		tmp = new CagePOJO();
 		
 		String cle = request.getParameter("cle");
@@ -48,6 +52,7 @@ public class AjouterServlet extends HttpServlet {
 		String x = request.getParameter("x");
 		String y = request.getParameter("y");
 		String lgCorne = request.getParameter("lgcorne");
+		String cleGaz = request.getParameter("cleGaz");
 		
 		tmp.setCle(Integer.parseInt(cle));
 		tmp.setAge(Integer.parseInt(age));
@@ -56,6 +61,15 @@ public class AjouterServlet extends HttpServlet {
 		tmp.setPoids(Float.parseFloat(poids));
 		tmp.setX(Integer.parseInt(x));
 		tmp.setY(Integer.parseInt(y));
+		//si c'est une gazelle
+		if(tmp.getCodeAnimal().equals("Gazelle")) {
+			gaz.setId(Integer.parseInt(cleGaz));
+			gaz.setIdAnimal(tmp.getCle());
+			gaz.setLgCornes(Integer.parseInt(lgCorne));
+			tmp.setGaz(gaz);
+		}
+		
+		
 		Manager.getInstance().ajouter(tmp);
 		
 		request.getServletContext().getRequestDispatcher("/init").forward(request, response);

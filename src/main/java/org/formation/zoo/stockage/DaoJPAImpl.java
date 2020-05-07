@@ -143,7 +143,7 @@ public class DaoJPAImpl<T> implements Dao<T> {
 		tmp.setGaz(gp);
 		jp = new DaoJPAImpl<>();
 		//jp.ajouter(tmp);
-		jp.effacer(tmp);
+		//jp.effacer(tmp);
 		//jp.effacer(tmp);
 		jp.modifier(tmp);
 		jp.effacer(80);

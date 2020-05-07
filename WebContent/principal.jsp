@@ -54,6 +54,8 @@
 		  <input type="number" id="lname" name="poids" placeholder="poids"><br>
 		  <label for="lname">son age</label><br>
 		  <input type="number" id="lname" name="age" placeholder="age"><br>
+		   <label for="cleGaz">la seconde clé si c'est une gazelle</label><br>
+		  <input type="number" id="cleGaz" name="cleGaz" placeholder="cle gazelle"><br><br>
 		  <label for="lname">longueur de cornes pour gazelle</label><br>
 		  <input type="number" id="lname" name="lgCorne" placeholder="longeur cornes"><br><br>
 		  <button type="submit">valider</button>

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.formation.zoo.controleur.Manager;
 import org.formation.zoo.modele.metier.Cage;
 import org.formation.zoo.service.CagePOJO;
+import org.formation.zoo.service.GazellePOJO;
 
 /**
  * Programme PRINCIPAL 
@@ -63,14 +64,21 @@ public final class Zoo {
 		Zoo z = null;
 		z = new Zoo();
 		CagePOJO tmp = null;
+		GazellePOJO gaz = null;
+		gaz = new GazellePOJO();
 		tmp = new CagePOJO();
-		tmp.setCle(7);
-		tmp.setAge(12);
-		tmp.setCodeAnimal("Lion");
-		tmp.setNom("lil");
-		tmp.setPoids(98);
-		tmp.setX(700);
-		tmp.setY(310);
+		tmp.setCle(8);
+		tmp.setAge(5);
+		tmp.setCodeAnimal("Singe");
+		tmp.setNom("Beasbe");
+		tmp.setPoids(68);
+		tmp.setX(560);
+		tmp.setY(430);
+//		gaz.setId(2);
+//		gaz.setIdAnimal(tmp.getCle());
+//		gaz.setLgCornes(8);
+//		tmp.setGaz(gaz);
+		
 		Manager.getInstance().ajouter(tmp);
 					
 		
@@ -83,7 +91,7 @@ public final class Zoo {
 		z.devorer(0,1 );
 		z.afficher();
 		System.out.println("on supprime un animal");
-		z.effacer(7);
+		//z.effacer(7);
 		z.afficher();
 		
 		System.out.println("on ferme le zoo");
