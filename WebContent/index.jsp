@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="style.css"></link>
 </head>
 <body>
+<jsp:forward page="/init"></jsp:forward>
 
 <header>
 <img class="logoGauche" alt="" src="images/logo.png"/>

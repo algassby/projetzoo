@@ -31,21 +31,23 @@ public class InitServlet extends HttpServlet {
 	public InitServlet() {
 		super();
 	}
-	public List<CagePOJO> getAnimaux()
-	{
-		return  Manager.getInstance().getAnimaux();
-		
-	}
 	
+	/**
+	 * @param req
+	 * @param resp		
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
-	
+	/**
+	 * @param req
+	 * @param resp
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		req.setAttribute("ListAnimal",this.getAnimaux());
+		req.setAttribute("ListAnimal",Manager.getInstance().getAnimaux());
 		req.getServletContext().getRequestDispatcher("/principal.jsp").forward(req, resp);
 		
 	}

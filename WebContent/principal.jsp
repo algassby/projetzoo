@@ -38,24 +38,29 @@
 <%--ajouter un animal --%>
 <div id="modal">
 	<div id="dialog" title="Dialog box">
-		  <form style="text-align:center;" action="<%=request.getContextPath()%>/ajouter" method="GET">
+		  <form style="text-align:center;" action="<%=request.getContextPath()%>/ajouter" method="POST">
 		  <h5>remplir ce formulaire pour ajouter un animal</h5>
 		  <label for="lname">sa clé</label><br>
 		  <input type="number" id="lname" name="cle" placeholder="cle"><br>
 		  <label for="fname"> Son code Animal</label><br>
 		  <input type="text" placeholder="CodeAnimal" name="codeAnimal"><br>
-		  <label for="lname">son abscisse</label><br>
+		 <%--  <label for="lname">son abscisse</label><br>
 		  <input type="number" id="lname" name="x" value="<% %>" placeholder="X"><br>
 		  <label for="lname">son ordonnée</label><br>
-		  <input type="number" id="lname" name="y" placeholder="Y"><br>
+		  <input type="number" id="lname" name="y" placeholder="Y"><br> --%>
 		  <label for="lname">son Nom</label><br>
 		  <input type="text" id="lname" name="nom" placeholder="nom"><br>
 		  <label for="lname">son poids</label><br>
 		  <input type="number" id="lname" name="poids" placeholder="poids"><br>
 		  <label for="lname">son age</label><br>
 		  <input type="number" id="lname" name="age" placeholder="age"><br>
-		   <label for="cleGaz">la seconde clé si c'est une gazelle</label><br>
-		  <input type="number" id="cleGaz" name="cleGaz" placeholder="cle gazelle"><br><br>
+		  <label for="cleGaz">la seconde clé si c'est une gazelle</label><br>
+		  <select>
+		  	<option value="lion">Lion</option>
+		  	<option value="gazelle">Gazelle</option>
+		  	<option value="singe">Singe</option>
+		  </select><br>
+		  <input type="number" id="cleGaz" name="cleGaz" placeholder="cle gazelle"><br>
 		  <label for="lname">longueur de cornes pour gazelle</label><br>
 		  <input type="number" id="lname" name="lgCorne" placeholder="longeur cornes"><br><br>
 		  <button type="submit">valider</button>
@@ -65,7 +70,7 @@
 <%--supprimer un animal --%>
 
 	
-<form name="fzoo"action="<%=request.getContextPath()%>/devorer" method="GET">
+<form name="fzoo"action="<%=request.getContextPath()%>/devorer" method="POST">
 <nav>
 <ul class="m">
 <%-- <jsp:useBean id="DevorerServlet" class="org.formation.zoo.controleur.DevorerServlet"></jsp:useBean> --%>
