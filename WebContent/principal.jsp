@@ -59,7 +59,7 @@
 		  	<option value="lion">Lion</option>
 		  	<option value="gazelle">Gazelle</option>
 		  	<option value="singe">Singe</option>
-		  </select><br>
+		  </select><br><br>
 		  <input type="number" id="cleGaz" name="cleGaz" placeholder="cle gazelle"><br>
 		  <label for="lname">longueur de cornes pour gazelle</label><br>
 		  <input type="number" id="lname" name="lgCorne" placeholder="longeur cornes"><br><br>
