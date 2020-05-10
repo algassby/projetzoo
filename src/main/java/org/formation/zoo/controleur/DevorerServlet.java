@@ -37,7 +37,9 @@ public class DevorerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String valMangeur =req.getParameter("mangeur");
 		String valMange = req.getParameter("mange");
+		
 		Manager.getInstance().devorer(Integer.parseInt(valMangeur), Integer.parseInt(valMange));
+		
 		req.getServletContext().getRequestDispatcher("/init").forward(req, resp);
 	}
 	
