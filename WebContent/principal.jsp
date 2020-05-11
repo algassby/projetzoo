@@ -7,6 +7,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@taglib uri="WEB-INF/tld/c.tld" prefix="c" %>
 <!DOCTYPE">
 <html>
 <head>
@@ -31,10 +32,14 @@
 	List<CagePOJO> zanimaux = null;
 	//zanimaux = new Vector<>();
 	zanimaux =  (Vector<CagePOJO>) request.getAttribute("ListAnimal");
+
 	//CagePOJO tmp = (CagePOJO) zanimaux.get(0);
 	String texte = null;
 
 %>
+<c:set var="zanimaux" value="${ listAnimal }"></c:set>
+
+
 <%--ajouter un animal --%>
 <div id="modal">
 	<div id="dialog" title="Dialog box">
@@ -86,8 +91,21 @@
 <article class="">
 
 
-
 <img  alt="mon zoo" src="images/plan.gif">
+
+
+<c:forEach var="zanimaux" items="${ListAnimal}">
+	<c:out value="${zanimaux}"></c:out>
+	<div id ="animal" style="position:absolute; top: ${zanimaux.getY()} px; left: ${zanimaux.getX()} px">
+		<img alt="" src="${zanimaux.getImage() }" class="animal">
+		<div class="afficheAnimal">
+			${zanimaux.getPancarte()}
+			
+		</div>
+	</div>
+
+</c:forEach>
+
 
 <%
   for(int i = 0; i < zanimaux.size(); i++){
@@ -108,8 +126,9 @@
 </article>
 
 <footer>
- <%-- <% out.print(request.getAttribute("devore")); %> --%>
+ 
 Etat en temps reel...
+
 </footer>
 </form>
 	<script type="text/javascript" src="code.js"></script>
