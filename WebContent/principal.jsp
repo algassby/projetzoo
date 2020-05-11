@@ -27,7 +27,7 @@
 <img class="logoGauche" alt="" src="images/logo.png"/>
 <img class="logoDroit" alt="" src="images/logo.png"/><p>Le zoo en folie</p>
 </header>
-<%	
+<%-- <%	
 
 	List<CagePOJO> zanimaux = null;
 	//zanimaux = new Vector<>();
@@ -36,8 +36,8 @@
 	//CagePOJO tmp = (CagePOJO) zanimaux.get(0);
 	String texte = null;
 
-%>
-<c:set var="zanimaux" value="${ listAnimal }"></c:set>
+%> --%>
+
 
 
 <%--ajouter un animal --%>
@@ -95,19 +95,25 @@
 
 
 <c:forEach var="zanimaux" items="${ListAnimal}">
-	<c:out value="${zanimaux}"></c:out>
-	<div id ="animal" style="position:absolute; top: ${zanimaux.getY()} px; left: ${zanimaux.getX()} px">
+	
+	<div id ="animal" style="position:absolute;top:${zanimaux.getY()}px; left: ${zanimaux.getX()}px;">
 		<img alt="" src="${zanimaux.getImage() }" class="animal">
 		<div class="afficheAnimal">
 			${zanimaux.getPancarte()}
 			
-		</div>
+		</div><br>
+		
+			<input type="radio" name="mangeur" id="mangeur" value="${zanimaux.getCle()-1 }" >
+			<label for="mangeur">Mangeur</label><br>
+			
+			<input type="radio" name="mange" id="mange" value="${zanimaux.getCle()-1 }" >
+			<label for="mange">Mange</label>
 	</div>
 
 </c:forEach>
 
 
-<%
+<%-- <%
   for(int i = 0; i < zanimaux.size(); i++){
 	texte = String.join("","<div id=\"animal", Integer.toString(i),"\" style=\"position:absolute;top:",
 	Integer.toString(zanimaux.get(i).getY()), "px;left:", Integer.toString(zanimaux.get(i).getX()),"px\">");
@@ -118,9 +124,10 @@
 	"<label>Mangeur</label><br><input type=\"radio\" id=\"mange\" name=\"mange\" value=", Integer.toString(zanimaux.get(i).getCle()-1), "><label>Mange</label></div>");
 	out.print(texte);
 	
-}
+	
+} --%>
   
-%>
+
 
 <br>
 </article>
