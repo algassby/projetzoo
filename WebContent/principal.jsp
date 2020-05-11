@@ -43,12 +43,17 @@
 <%--ajouter un animal --%>
 <div id="modal">
 	<div id="dialog" title="Dialog box">
-		  <form style="text-align:center;" action="<%=request.getContextPath()%>/ajouter" method="POST">
+		  <form style="text-align:center;" action="${pageContext.request.contextPath}/ajouter" method="POST">
 		  <h5>remplir ce formulaire pour ajouter un animal</h5>
 		  <label for="lname">sa clé</label><br>
-		  <input type="number" id="lname" name="cle" placeholder="cle"><br>
-		  <label for="fname"> Son code Animal</label><br>
-		  <input type="text" placeholder="CodeAnimal" name="codeAnimal"><br>
+		  <input type="number" id="lname" name="cle" placeholder="cle"><br><br>	
+		  <!-- <label for="fname"> Son code Animal</label><br>
+		  <input type="text" placeholder="CodeAnimal" name="codeAnimal"><br> -->
+		  <select name="animal">
+		  	<option value="lion">Lion</option>
+		  	<option value="gazelle">Gazelle</option>
+		  	<option value="singe">Singe</option>
+		  </select><br>
 		 <%--  <label for="lname">son abscisse</label><br>
 		  <input type="number" id="lname" name="x" value="<% %>" placeholder="X"><br>
 		  <label for="lname">son ordonnée</label><br>
@@ -60,11 +65,7 @@
 		  <label for="lname">son age</label><br>
 		  <input type="number" id="lname" name="age" placeholder="age"><br>
 		  <label for="cleGaz">la seconde clé si c'est une gazelle</label><br>
-		  <select>
-		  	<option value="lion">Lion</option>
-		  	<option value="gazelle">Gazelle</option>
-		  	<option value="singe">Singe</option>
-		  </select><br><br>
+		  
 		  <input type="number" id="cleGaz" name="cleGaz" placeholder="cle gazelle"><br>
 		  <label for="lname">longueur de cornes pour gazelle</label><br>
 		  <input type="number" id="lname" name="lgCorne" placeholder="longeur cornes"><br><br>
@@ -77,11 +78,11 @@
 <%--supprimer un animal --%>
 
 	
-<form name="fzoo"action="<%=request.getContextPath()%>/devorer" method="POST">
+<form name="fzoo"action="${pageContext.request.contextPath}/devorer" method="POST">
 <nav>
 <ul class="m">
 <%-- <jsp:useBean id="DevorerServlet" class="org.formation.zoo.controleur.DevorerServlet"></jsp:useBean> --%>
-	<li class="m"><a href="<%=request.getContextPath()+"/manger"%>">TOUT le monde mange (defaut)</a></li>
+	<li class="m"><a href="${pageContext.request.contextPath}/manger">TOUT le monde mange (defaut)</a></li>
 	<li class="m"><a href="#" Onclick="fzoo.submit()">FAIRE manger les animaux selectionnes</a></li>
 	<li class="m"><a href="#" id = "bajouter">Ajouter un animal</a></li>
 	<li class="m"><a href="supprimer.jsp" id="bsupprimer">Supprimer un animal</a></li>
@@ -93,7 +94,7 @@
 
 <img  alt="mon zoo" src="images/plan.gif">
 
-
+<%--affichage des animaux --%>
 <c:forEach var="zanimaux" items="${ListAnimal}">
 	
 	<div id ="animal" style="position:absolute;top:${zanimaux.getY()}px; left: ${zanimaux.getX()}px;">
@@ -133,6 +134,7 @@
 </article>
 
 <footer>
+<p style="float: right; color: red;"><c:out value="${ burkException }"></c:out> </p>
  
 Etat en temps reel...
 

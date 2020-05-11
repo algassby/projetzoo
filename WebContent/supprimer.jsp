@@ -25,13 +25,14 @@
 </header>
 <div class = "container">
 	<div class= "jumbotron text-center">
-		  <form style="text-align:center;" action="<%=request.getContextPath()+"/supprimer"%>" method="GET">
+		  <form style="text-align:center;" action="${pageContext.request.contextPath}/supprimer" method="POST">
 		  	<div class="form-group">
 		  		<h4 class="card">Veuillez entrer la clé de l'animal</h4>
 			    <label for="cle">la clé de l'animal</label>
 			    <input type="number" name="cle" value="<%-- <% request.getAttribute("cle"); %> --%>" class="form-control" id="cle" placeholder="entrer la clé">
-			    <button class="btn btn-success mt-5 mb-3" type="submit">valider</button>
-			    <p> Si vous chager d'avis cliquez <span><a href="<%=request.getContextPath()+"/init"%>" style="color:blue;">ici</a></span> pour revenir à l'index</p>
+			    <button class="btn btn-success mt-5 mb-3" type="submit">Valider</button>
+			    <button class="btn btn-danger mt-5 mb-3 ml-3" type="reset" value="reset" id="reset">Annuler</button>
+			    <p> Si vous chager d'avis cliquez <span><a href="${pageContext.request.contextPath}/init" style="color:blue;">ici</a></span> pour revenir à l'index</p>
 			 </div>
 		</form>
 	</div>

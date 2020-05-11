@@ -13,7 +13,12 @@ $(document).ready(function(){
 		      $("#dialog").dialog("open");
 		      
 		  });
+		  //button reset
 		  
+		  $('#reset').click(function() {
+			   // window.location.href = '${pageContext.request.contextPath}/init';
+			  window.location.replace("${pageContext.request.contextPath}/init");
+			});
 	
 });
 

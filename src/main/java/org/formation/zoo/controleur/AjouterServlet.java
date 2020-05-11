@@ -24,7 +24,6 @@ public class AjouterServlet extends HttpServlet {
      */
     public AjouterServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -44,23 +43,23 @@ public class AjouterServlet extends HttpServlet {
 		
 		tmp = new CagePOJO();
 		
-		String cle = request.getParameter("cle");
-		String age = request.getParameter("age");
-		String nom = request.getParameter("nom");
-		String codeAnimal = request.getParameter("codeAnimal");
-		String poids = request.getParameter("poids");
-		String x = request.getParameter("x");
-		String y = request.getParameter("y");
-		String lgCorne = request.getParameter("lgcorne");
-		String cleGaz = request.getParameter("cleGaz");
+		String cle = request.getParameter("cle").trim();
+		String age = request.getParameter("age").trim();
+		String nom = request.getParameter("nom").trim();
+		String codeAnimal = request.getParameter("animal").trim();
+		String poids = request.getParameter("poids").trim();
+//		String x = request.getParameter("x");
+//		String y = request.getParameter("y");
+		String lgCorne = request.getParameter("lgcorne").trim();
+		String cleGaz = request.getParameter("cleGaz").trim();
 		
 		tmp.setCle(Integer.parseInt(cle));
 		tmp.setAge(Integer.parseInt(age));
 		tmp.setCodeAnimal(codeAnimal);
 		tmp.setNom(nom);
 		tmp.setPoids(Float.parseFloat(poids));
-		tmp.setX(Integer.parseInt(x));
-		tmp.setY(Integer.parseInt(y));
+//		tmp.setX(Integer.parseInt(x));
+//		tmp.setY(Integer.parseInt(y));
 		//si c'est une gazelle
 		if(tmp.getCodeAnimal().equals("Gazelle")) {
 			gaz.setId(Integer.parseInt(cleGaz));
@@ -69,8 +68,8 @@ public class AjouterServlet extends HttpServlet {
 			tmp.setGaz(gaz);
 		}
 		
-		
 		Manager.getInstance().ajouter(tmp);
+		
 		
 		request.getServletContext().getRequestDispatcher("/init").forward(request, response);
 	}
