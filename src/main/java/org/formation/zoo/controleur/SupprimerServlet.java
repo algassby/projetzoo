@@ -41,10 +41,10 @@ public class SupprimerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CagePOJO tmp = null;
 		tmp =  new CagePOJO();
-		int valCle = 0;
+		//int valCle = 0;
 		String cle = request.getParameter("cle");
-		valCle = Integer.parseInt(cle);
-		if(valCle!=tmp.getCle() || cle.length()!=0) {
+		//valCle = Integer.parseInt(cle);
+		
 		
 //			try {   
 //				valCle = Integer.parseInt(cle);
@@ -52,21 +52,26 @@ public class SupprimerServlet extends HttpServlet {
 //					request.setAttribute("msg", nfe.getMessage());
 //				  
 //				}
-			tmp.setCle(valCle);
+			
+			if(!cle.isEmpty() || cle.length()!=0) {
+				tmp.setCle(Integer.parseInt(cle));
+				if(Integer.parseInt(cle)== tmp.getCle()) {
 //			if(Integer.parseInt(cle) == tmp.getCle()) {
 				Manager.getInstance().supprimer(tmp.getCle());
 				request.getServletContext().getRequestDispatcher("/init").forward(request, response);
+				}
 			
-//			else {
-//				request.getServletContext().getRequestDispatcher("/supprimer").forward(request, response);
-//				request.setAttribute("msgCle", "veuillez entrer une clé valide");
-//			}
+			else {
+				request.setAttribute("msgCle", "veuillez entrer une clé valide");
+				request.getServletContext().getRequestDispatcher("/supprimer.jsp").forward(request, response);
+				
+			}
 		}
 		else
 		{
-
-			request.getServletContext().getRequestDispatcher("/supprimer").forward(request, response);
 			request.setAttribute("msg", "veuillez entrer une valeur dont la longeur est superieeur à 0 ");
+			request.getServletContext().getRequestDispatcher("/supprimer.jsp").forward(request, response);
+			
 		}
 		
 		

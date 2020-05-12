@@ -37,7 +37,8 @@
 			 </div>
 		</form>
 		<p><c:out value="${msgCle}"></c:out></p>
-		<p><c:out value="${msg }"></c:out></p>
+		<p style="color: red;"><c:out value="${msg}"></c:out></p>
+		
 	</div>
 </div>
 

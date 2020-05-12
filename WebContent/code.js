@@ -19,6 +19,12 @@ $(document).ready(function(){
 			   // window.location.href = '${pageContext.request.contextPath}/init';
 			  window.location.replace("index.jsp");
 			});
+		  //button submit
+		  $('#submit').click(function(){
+			   if($.trim($('#myMessage').val()) == ''){
+			      alert('Input can not be left blank');
+			   }
+			});
 	
 });
 
