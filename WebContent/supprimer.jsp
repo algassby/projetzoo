@@ -7,6 +7,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="WEB-INF/tld/c.tld" prefix="c" %>
 <!DOCTYPE">
 <html>
 <head>
@@ -35,6 +36,8 @@
 			    <p> Si vous chager d'avis cliquez <span><a href="${pageContext.request.contextPath}/init" style="color:blue;">ici</a></span> pour revenir à l'index</p>
 			 </div>
 		</form>
+		<p><c:out value="${msgCle}"></c:out></p>
+		<p><c:out value="${msg }"></c:out></p>
 	</div>
 </div>
 

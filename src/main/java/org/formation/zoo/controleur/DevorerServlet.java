@@ -41,14 +41,8 @@ public class DevorerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String valMangeur =req.getParameter("mangeur");
 		String valMange = req.getParameter("mange");
-		for(int i = 0; i < Manager.getInstance().getAnimaux().size();i++) {
-		if(Manager.getInstance().getAnimaux().get(i) instanceof Mangeable) {
-			Manager.getInstance().devorer(Integer.parseInt(valMangeur), Integer.parseInt(valMange));
-		}
-		else {
-				req.setAttribute("burkException", new BeurkException());
-			}
-		}
+		
+		Manager.getInstance().devorer(Integer.parseInt(valMangeur), Integer.parseInt(valMange));
 		req.getServletContext().getRequestDispatcher("/init").forward(req, resp);
 	}
 	

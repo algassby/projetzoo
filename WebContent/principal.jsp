@@ -70,7 +70,7 @@
 		  <label for="lname">longueur de cornes pour gazelle</label><br>
 		  <input type="number" id="lname" name="lgCorne" placeholder="longeur cornes"><br><br>
 		  <button type="submit">valider</button>
-		  <input type="reset" value="reset">
+		  <input type="reset" value="reset" id="reset">
 		 
 		</form>
 	</div>

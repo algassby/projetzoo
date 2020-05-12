@@ -17,7 +17,7 @@ $(document).ready(function(){
 		  
 		  $('#reset').click(function() {
 			   // window.location.href = '${pageContext.request.contextPath}/init';
-			  window.location.replace("${pageContext.request.contextPath}/init");
+			  window.location.replace("index.jsp");
 			});
 	
 });
