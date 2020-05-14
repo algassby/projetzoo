@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.formation.zoo.modele.metier.Animal;
 import org.formation.zoo.service.CagePOJO;
 import org.formation.zoo.service.GazellePOJO;
 
@@ -41,7 +42,7 @@ public class AjouterServlet extends HttpServlet {
 		GazellePOJO gaz = null;
 		gaz = new GazellePOJO();
 		
-		tmp = new CagePOJO();
+		
 		
 		String cle = request.getParameter("cle").trim();
 		String age = request.getParameter("age").trim();
@@ -69,6 +70,7 @@ public class AjouterServlet extends HttpServlet {
 		}
 		
 		Manager.getInstance().ajouter(tmp);
+		//Manager.getInstance().entrer((Animal)Manager.getInstance().getAnimaux().get(0));
 		
 		
 		request.getServletContext().getRequestDispatcher("/init").forward(request, response);

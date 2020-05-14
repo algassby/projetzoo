@@ -54,11 +54,11 @@ public class SupprimerServlet extends HttpServlet {
 //				}
 			
 			if(!cle.isEmpty() || cle.length()!=0) {
-				tmp.setCle(Integer.parseInt(cle));
+				tmp.setCle(Integer.parseInt(cle) );
 				if(Integer.parseInt(cle)== tmp.getCle()) {
 //			if(Integer.parseInt(cle) == tmp.getCle()) {
 				Manager.getInstance().supprimer(tmp.getCle());
-				request.getServletContext().getRequestDispatcher("/init").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				}
 			
 			else {

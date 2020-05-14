@@ -210,8 +210,27 @@ public final class Manager {
 	public void ajouter(CagePOJO obj) {
 		acces.ajouter(obj);
 	}
+	/**
+	 * supprime l'animal
+	 * @param cle
+	 */
 	public void supprimer(int cle) {
 		acces.effacer(cle);
+	}
+	public void entrer(Animal obj) {
+	
+		for (CageManager tmp: lesCages) {
+			try {
+				tmp.entrer((Animal)obj);
+			} catch (PorteException e) {
+				
+				logger.log(Level.SEVERE, e.getMessage());
+			} catch (CagePleineException e) {
+				
+				logger.log(Level.SEVERE, e.getMessage());
+			
+			}
+		}
 	}
 	
 

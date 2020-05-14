@@ -3,8 +3,8 @@
  */
 package org.formation.zoo.modele.technique;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.logging.Logger;
 
 import org.formation.zoo.modele.metier.Animal;
 import org.formation.zoo.modele.metier.Cage;
@@ -21,9 +21,9 @@ import utilitaire.Conversion;
 public final  class CageManager {
 	
 	public final static String IMAGES ="images/";
+	private Logger logger;
 
 	private Cage controleur;
-	private List<Cage> lesCages;
 	private CagePOJO vue;
 	private Dao<CagePOJO> modele;
 	/**
@@ -33,10 +33,11 @@ public final  class CageManager {
 	 */
 	
 	public CageManager(CagePOJO pojo, Dao<CagePOJO> dao) {
-		lesCages = new ArrayList<>();
+		
 		modele  =  dao;
 		vue = pojo;
 		controleur = Conversion.pojoToCage(pojo);
+		logger = Logger.getLogger("level");
 	}
 	/**
 	 * 
@@ -132,6 +133,11 @@ public final  class CageManager {
 	public void setControleur(Cage controleur) {
 		this.controleur = controleur;
 	}
+	/**
+	 * entrer un animal dans une cage vide
+	 */
+	
+	
 	
 	
 }

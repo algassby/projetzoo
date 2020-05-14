@@ -67,13 +67,13 @@ public final class Zoo {
 		GazellePOJO gaz = null;
 		gaz = new GazellePOJO();
 		tmp = new CagePOJO();
-		tmp.setCle(8);
+		tmp.setCle(7);
 		tmp.setAge(5);
 		tmp.setCodeAnimal("Singe");
 		tmp.setNom("Beasbe");
 		tmp.setPoids(68);
-		tmp.setX(560);
-		tmp.setY(430);
+		tmp.setX(200);
+		tmp.setY(200);
 //		gaz.setId(2);
 //		gaz.setIdAnimal(tmp.getCle());
 //		gaz.setLgCornes(8);
