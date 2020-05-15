@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>30</y>
+      <x>330</x>
+      <y>10</y>
       <w>140</w>
       <h>100</h>
     </coordinates>
@@ -19,7 +19,7 @@ HttpServlet
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
+      <x>130</x>
       <y>270</y>
       <w>80</w>
       <h>100</h>
@@ -36,7 +36,7 @@ InitServlet
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>380</x>
+      <x>240</x>
       <y>270</y>
       <w>90</w>
       <h>100</h>
@@ -53,7 +53,7 @@ MangerServlet
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
+      <x>350</x>
       <y>270</y>
       <w>100</w>
       <h>100</h>
@@ -70,34 +70,90 @@ DevorerServlet
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>310</x>
-      <y>120</y>
-      <w>100</w>
-      <h>170</h>
+      <x>170</x>
+      <y>100</y>
+      <w>210</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>190.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>100</y>
+      <w>130</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>100</y>
+      <w>40</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>270</y>
+      <w>140</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Stereotype&gt;&gt;
+SupprimerServlet
+--
+
+--
++doGet
++doPost</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>270</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Stereotype&gt;&gt;
+AjouterServlet
+--
+
+--
++doGet
++doPost</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>420</x>
-      <y>120</y>
-      <w>30</w>
-      <h>170</h>
+      <y>100</y>
+      <w>110</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;90.0;170.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>120</y>
-      <w>100</w>
-      <h>170</h>
+      <x>440</x>
+      <y>100</y>
+      <w>200</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;180.0;170.0</additional_attributes>
   </element>
 </diagram>

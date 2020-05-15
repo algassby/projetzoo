@@ -1,6 +1,7 @@
 package org.formation.zoo.controleur;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.ServletException;
@@ -40,6 +41,7 @@ public class AjouterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CagePOJO tmp = null;
 		GazellePOJO gaz = null;
+		List<CagePOJO> liste = null;
 		gaz = new GazellePOJO();
 		
 		
@@ -68,8 +70,9 @@ public class AjouterServlet extends HttpServlet {
 			gaz.setLgCornes(Integer.parseInt(lgCorne));
 			tmp.setGaz(gaz);
 		}
-		
+		liste = Manager.getInstance().getAnimaux();
 		Manager.getInstance().ajouter(tmp);
+		//Manager.getInstance().entrer(liste.add(tmp));
 		//Manager.getInstance().entrer((Animal)Manager.getInstance().getAnimaux().get(0));
 		
 		
